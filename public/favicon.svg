@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" rx="24" fill="#15803D"/>
+  <!-- Keshav Info 'K' Emblem -->
+  <rect x="20" y="20" width="16" height="60" rx="4" fill="#FFFFFF"/>
+  <path d="M42 52L66 22H82L54 57L42 52Z" fill="#FFFFFF"/>
+  <path d="M46 50L80 80H64L38 56L46 50Z" fill="#86EFAC"/>
+  <circle cx="72" cy="27" r="6" fill="#4ADE80"/>
+</svg>
