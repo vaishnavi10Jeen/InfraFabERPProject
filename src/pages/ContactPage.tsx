@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  Building2, Phone, Mail, MapPin, MessageSquare, 
-  ExternalLink, ArrowRight, CheckCircle2, Clock, 
-  ShieldCheck, Sparkles, Send, Check
+  Phone, Mail, MapPin, MessageSquare, 
+  ArrowRight, CheckCircle2, ShieldCheck
 } from 'lucide-react';
 
 export const ContactPage: React.FC = () => {
@@ -23,51 +22,66 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="space-y-16 pb-20 bg-white text-slate-900">
       
-      {/* 1. HERO SECTION - CLEAN HEADLINE & INTRO (NO IMAGE) */}
-      <section className="bg-gradient-to-b from-keshav-50/70 via-white to-slate-50 py-12 sm:py-16 border-b border-slate-200 relative overflow-hidden">
-        {/* Subtle decorative glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-72 bg-keshav-100/50 rounded-full blur-3xl pointer-events-none -z-0"></div>
+      {/* 1. HERO SECTION - CLEAN 'GET IN TOUCH' WITH BOTTOM WAVY LIGHT GREEN LINEAR GRADIENT */}
+      <section className="relative bg-gradient-to-b from-slate-50 via-white to-slate-50/50 pt-16 sm:pt-24 pb-28 sm:pb-36 overflow-hidden">
+        {/* Subtle decorative top ambient glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-60 bg-gradient-to-b from-keshav-100/40 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-5">
-          <div className="inline-flex items-center gap-2 bg-keshav-50 border border-keshav-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-keshav-800 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-keshav-500 animate-pulse"></span>
-            <span>Engineering Sales & Technical Consultation</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-slate-900">
-            Connect with{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-keshav-600 via-keshav-700 to-keshav-800">
-              infraFab ERP Sales
-            </span>
+        {/* Text Container: Just "Get In Touch" as requested */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900 leading-tight">
+            Get In Touch
           </h1>
-
-          <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto">
-            Have questions about integrations with your weighbridge, Tally ledger, or multi-plant deployment? Our engineering team is standing by.
+          <p className="text-sm sm:text-base text-slate-500 font-medium max-w-md mx-auto">
+            Have questions about infraFab ERP? Our engineering and sales desk is ready to assist.
           </p>
+        </div>
 
-          {/* Quick Contact Chips */}
-          <div className="pt-2 flex flex-wrap justify-center gap-3 text-xs font-bold text-slate-700">
-            <a
-              href="tel:+919924266466"
-              className="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-keshav-400 px-4 py-2 rounded-xl shadow-xs transition hover:text-keshav-700 hover:shadow-sm"
-            >
-              <Phone className="w-4 h-4 text-keshav-600" />
-              <span className="font-mono">+91 99242 66466</span>
-            </a>
+        {/* Bottom Wavy Ribbon & Background in Light Green Linear Gradient (Matching Reference Image Design) */}
+        <div className="absolute inset-x-0 bottom-0 pointer-events-none overflow-hidden leading-none z-0">
+          <svg
+            viewBox="0 0 1440 380"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-32 sm:h-48 md:h-64 object-cover block"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              {/* Primary Light Green Linear Gradient matching Keshav Brand */}
+              <linearGradient id="keshavWaveGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+                <stop offset="0%" stopColor="#8CC12C" />
+                <stop offset="35%" stopColor="#A3E635" />
+                <stop offset="70%" stopColor="#84CC16" />
+                <stop offset="100%" stopColor="#4ADE80" />
+              </linearGradient>
 
-            <a
-              href="mailto:info@shreejiinfrastructure.com"
-              className="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-keshav-400 px-4 py-2 rounded-xl shadow-xs transition hover:text-keshav-700 hover:shadow-sm"
-            >
-              <Mail className="w-4 h-4 text-keshav-600" />
-              <span className="font-mono">info@shreejiinfrastructure.com</span>
-            </a>
+              {/* Soft Translucent Light Green Gradient for Bottom Ambient Wave */}
+              <linearGradient id="keshavWaveSoft" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#8CC12C" stopOpacity="0.20" />
+                <stop offset="40%" stopColor="#BEF264" stopOpacity="0.30" />
+                <stop offset="75%" stopColor="#86EFAC" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="#A3E635" stopOpacity="0.15" />
+              </linearGradient>
 
-            <div className="inline-flex items-center gap-2 bg-keshav-50 border border-keshav-200 text-keshav-900 px-4 py-2 rounded-xl shadow-xs">
-              <ShieldCheck className="w-4 h-4 text-keshav-600" />
-              <span>2-Hour Shift Response SLA</span>
-            </div>
-          </div>
+              {/* Gentle shadow to give the ribbon depth */}
+              <filter id="waveShadow" x="-5%" y="-10%" width="110%" height="130%">
+                <feDropShadow dx="0" dy="6" stdDeviation="12" floodColor="#3F6212" floodOpacity="0.22" />
+              </filter>
+            </defs>
+
+            {/* Layer 1: Soft Ambient Bottom Wave Fill */}
+            <path
+              d="M 0 250 C 260 210, 480 300, 760 260 C 1040 220, 1260 310, 1440 270 L 1440 380 L 0 380 Z"
+              fill="url(#keshavWaveSoft)"
+            />
+
+            {/* Layer 2: Main Flowing Wavy Ribbon (Form-fitted from reference image) */}
+            <path
+              d="M 0.0 181.5 C 15.0 183.5, 60.0 189.4, 90.0 193.4 C 120.0 197.4, 135.0 205.7, 180.0 205.3 C 225.0 204.9, 307.5 195.0, 360.0 190.8 C 412.5 186.6, 450.0 178.4, 495.0 180.2 C 540.0 181.9, 592.5 190.1, 630.0 201.3 C 667.5 212.5, 690.0 230.0, 720.0 247.5 C 750.0 265.0, 780.0 290.1, 810.0 306.3 C 840.0 322.5, 870.0 336.4, 900.0 344.6 C 930.0 352.9, 960.0 355.9, 990.0 355.8 C 1020.0 355.7, 1042.5 349.7, 1080.0 343.9 C 1117.5 338.1, 1177.5 323.1, 1215.0 320.8 C 1252.5 318.5, 1267.5 325.7, 1305.0 330.0 C 1342.5 334.3, 1417.5 343.8, 1440.0 346.5 L 1440 359.7 C 1425.0 360.9, 1380.0 367.6, 1350.0 367.0 C 1320.0 366.4, 1290.0 358.6, 1260.0 355.8 C 1230.0 353.1, 1200.0 349.1, 1170.0 350.5 C 1140.0 351.9, 1110.0 359.9, 1080.0 364.4 C 1050.0 368.9, 1020.0 376.3, 990.0 377.6 C 960.0 378.9, 930.0 378.2, 900.0 372.3 C 870.0 366.4, 840.0 354.7, 810.0 341.9 C 780.0 329.1, 750.0 308.8, 720.0 295.7 C 690.0 282.6, 660.0 270.3, 630.0 263.4 C 600.0 256.5, 570.0 254.8, 540.0 254.1 C 510.0 253.4, 487.5 256.2, 450.0 259.4 C 412.5 262.6, 360.0 271.5, 315.0 273.3 C 270.0 275.1, 217.5 272.1, 180.0 270.0 C 142.5 267.9, 120.0 260.1, 90.0 260.7 C 60.0 261.2, 15.0 271.2, 0.0 273.3 Z"
+              fill="url(#keshavWaveGrad)"
+              filter="url(#waveShadow)"
+            />
+          </svg>
         </div>
       </section>
 
