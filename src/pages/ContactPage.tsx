@@ -97,7 +97,7 @@ export const ContactPage: React.FC = () => {
                 
                 {/* BOX 1: OUR MAIN OFFICE (Col 1) */}
                 <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100">
-                  <div className="w-12 h-12 rounded-2xl bg-[#E6F7F9] text-[#2EA2B2] flex items-center justify-center mb-3 shadow-2xs">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -112,13 +112,13 @@ export const ContactPage: React.FC = () => {
 
                 {/* BOX 2: PHONE NUMBER (Col 2 - Overlaps Right Form on Desktop) */}
                 <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100 lg:translate-x-8 xl:translate-x-12">
-                  <div className="w-12 h-12 rounded-2xl bg-[#E6F7F9] text-[#2EA2B2] flex items-center justify-center mb-3 shadow-2xs">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
                     <Phone className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
                     PHONE NUMBER
                   </h3>
-                  <a href="tel:+919924266466" className="text-xs text-slate-800 font-black hover:text-[#2EA2B2] block transition font-mono">
+                  <a href="tel:+919924266466" className="text-xs text-slate-800 font-black hover:text-keshav-700 block transition font-mono">
                     +91 99242 66466
                   </a>
                   <span className="text-[10px] text-slate-500 font-semibold block mt-1 font-mono">
@@ -128,7 +128,7 @@ export const ContactPage: React.FC = () => {
 
                 {/* BOX 3: WHATSAPP SUPPORT (Col 1) */}
                 <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100">
-                  <div className="w-12 h-12 rounded-2xl bg-[#E6F7F9] text-[#2EA2B2] flex items-center justify-center mb-3 shadow-2xs">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
                     <MessageSquare className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -138,7 +138,7 @@ export const ContactPage: React.FC = () => {
                     href="https://wa.me/919825012345?text=Hello%20infraFab%20ERP%20Team,%20I%20am%20interested%20in%20deploying%20the%20ERP%20for%20our%20steel%20fabrication%20plant."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-[#2EA2B2] font-black hover:underline block font-mono"
+                    className="text-xs text-keshav-700 font-black hover:underline block font-mono"
                   >
                     +91 98250 12345
                   </a>
@@ -149,7 +149,7 @@ export const ContactPage: React.FC = () => {
 
                 {/* BOX 4: EMAIL (Col 2 - Overlaps Right Form on Desktop) */}
                 <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100 lg:translate-x-8 xl:translate-x-12">
-                  <div className="w-12 h-12 rounded-2xl bg-[#E6F7F9] text-[#2EA2B2] flex items-center justify-center mb-3 shadow-2xs">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
                     <Mail className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -157,7 +157,7 @@ export const ContactPage: React.FC = () => {
                   </h3>
                   <a
                     href="mailto:info@shreejiinfrastructure.com"
-                    className="text-[11px] text-[#2EA2B2] font-black hover:underline block break-all font-mono"
+                    className="text-[11px] text-keshav-700 font-black hover:underline block break-all font-mono"
                   >
                     info@shreejiinfrastructure.com
                   </a>
@@ -170,13 +170,13 @@ export const ContactPage: React.FC = () => {
 
               {/* Enterprise SLA Note */}
               <div className="mt-5 text-center sm:text-left text-xs text-slate-500 flex items-center justify-center sm:justify-start gap-1.5 font-medium">
-                <ShieldCheck className="w-4 h-4 text-[#2EA2B2]" />
+                <ShieldCheck className="w-4 h-4 text-keshav-600" />
                 <span>Enterprise SLA: Shift Response Within 2 Hours</span>
               </div>
             </div>
 
-            {/* RIGHT SIDE: CONTACT INQUIRY FORM (TEAL #89D8E3 AS PER ATTACHED IMAGE) */}
-            <div className="lg:col-span-7 bg-[#89D8E3] rounded-3xl p-6 sm:p-10 lg:p-12 lg:pl-20 xl:pl-24 shadow-2xl relative z-10 mt-8 lg:mt-0">
+            {/* RIGHT SIDE: CONTACT INQUIRY FORM (THEME LIGHT GREEN BACKGROUND) */}
+            <div className="lg:col-span-7 bg-gradient-to-br from-keshav-200 via-keshav-200 to-keshav-300 border border-keshav-300/70 rounded-3xl p-6 sm:p-10 lg:p-12 lg:pl-20 xl:pl-24 shadow-2xl relative z-10 mt-8 lg:mt-0">
               {submitted ? (
                 <div className="text-center py-12 space-y-4 bg-white/95 rounded-2xl p-8 shadow-sm">
                   <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-300">
