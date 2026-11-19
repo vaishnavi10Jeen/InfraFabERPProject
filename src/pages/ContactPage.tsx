@@ -75,81 +75,91 @@ export const ContactPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-10">
           
-          {/* LEFT COLUMN: CONTACT INFORMATION & PLANT LOCATIONS */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
-              <h2 className="text-xl font-black text-slate-900 border-b border-slate-200 pb-4">
-                Headquarters & Manufacturing Yard
-              </h2>
-
-              <div className="space-y-4 text-xs sm:text-sm text-slate-700">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-keshav-600 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-slate-900 block font-bold">Registered Office & Manufacturing Plant</strong>
-                    <span>FF 15, 16 Dwarkesh Complex, Opp. HCG Cancer Hospital, Sun Pharma Road, Vadodara, Gujarat – 390012, India</span>
+          {/* LEFT COLUMN: 4 SMALL BOXES (2x2 GRID AS PER ATTACHED IMAGE) */}
+          <div className="lg:col-span-5 flex flex-col">
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl h-full flex flex-col justify-between">
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                {/* BOX 1: OUR MAIN OFFICE */}
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[185px]">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                    <MapPin className="w-6 h-6 text-keshav-600" />
                   </div>
+                  <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
+                    OUR MAIN OFFICE
+                  </h3>
+                  <p className="text-[11px] text-slate-600 font-medium leading-relaxed">
+                    FF 15, 16 Dwarkesh Complex,<br />
+                    Sun Pharma Road, Vadodara,<br />
+                    Gujarat – 390012
+                  </p>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-keshav-600 shrink-0" />
-                  <div>
-                    <strong className="text-slate-900 block font-bold">Official Contact Desk</strong>
-                    <a href="tel:+919924266466" className="hover:text-keshav-700 transition font-mono font-bold">
-                      +91 99242 66466
-                    </a>
+                {/* BOX 2: PHONE NUMBER */}
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[185px]">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                    <Phone className="w-6 h-6 text-keshav-600" />
                   </div>
+                  <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
+                    PHONE NUMBER
+                  </h3>
+                  <a href="tel:+919924266466" className="text-xs text-slate-800 font-black hover:text-keshav-700 block transition font-mono">
+                    +91 99242 66466
+                  </a>
+                  <span className="text-[10px] text-slate-500 font-semibold block mt-1 font-mono">
+                    +91 98250 12345 (Toll Free)
+                  </span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-keshav-600 shrink-0" />
-                  <div>
-                    <strong className="text-slate-900 block font-bold">Official Software & Corporate Email</strong>
-                    <div className="space-y-0.5">
-                      <a href="mailto:info@shreejiinfrastructure.com" className="hover:text-keshav-700 transition font-mono font-bold block">
-                        info@shreejiinfrastructure.com
-                      </a>
-                    </div>
+                {/* BOX 3: WHATSAPP & SUPPORT */}
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[185px]">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                    <MessageSquare className="w-6 h-6 text-keshav-600" />
                   </div>
+                  <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
+                    WHATSAPP SUPPORT
+                  </h3>
+                  <a
+                    href="https://wa.me/919825012345?text=Hello%20infraFab%20ERP%20Team,%20I%20am%20interested%20in%20deploying%20the%20ERP%20for%20our%20steel%20fabrication%20plant."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-keshav-700 font-black hover:underline block font-mono"
+                  >
+                    +91 98250 12345
+                  </a>
+                  <span className="text-[10px] text-slate-500 font-medium block mt-1">
+                    Mon–Sat (9 AM–7:30 PM)
+                  </span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <ExternalLink className="w-5 h-5 text-slate-500 shrink-0" />
-                  <div>
-                    <strong className="text-slate-900 block font-bold">Parent Infrastructure Website</strong>
-                    <a
-                      href="https://shreejiinfrastructure.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-keshav-700 hover:underline transition font-bold"
-                    >
-                      https://shreejiinfrastructure.com/
-                    </a>
+                {/* BOX 4: EMAIL */}
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[185px]">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                    <Mail className="w-6 h-6 text-keshav-600" />
                   </div>
+                  <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
+                    EMAIL
+                  </h3>
+                  <a
+                    href="mailto:info@shreejiinfrastructure.com"
+                    className="text-[11px] text-keshav-700 font-black hover:underline block break-all font-mono"
+                  >
+                    info@shreejiinfrastructure.com
+                  </a>
+                  <span className="text-[10px] text-slate-500 font-medium block mt-1">
+                    Direct Corporate Inbox
+                  </span>
                 </div>
+
               </div>
 
-              {/* Working Hours */}
-              <div className="pt-4 border-t border-slate-200 text-xs text-slate-600 space-y-1">
-                <div className="flex items-center gap-2 text-slate-900 font-bold">
-                  <Clock className="w-4 h-4 text-keshav-600" />
-                  <span>Support Hours: Monday – Saturday (9:00 AM – 7:30 PM IST)</span>
-                </div>
-                <p>Enterprise SLA: Inquiries answered within 2 hours during active factory shifts.</p>
+              {/* Bottom SLA Bar */}
+              <div className="pt-4 mt-4 border-t border-slate-800 text-center text-xs text-slate-400 flex items-center justify-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-keshav-400" />
+                <span>Enterprise SLA: Shift Response Within 2 Hours</span>
               </div>
 
-              {/* Direct WhatsApp CTA */}
-              <div className="pt-2">
-                <a
-                  href="https://wa.me/919825012345?text=Hello%20infraFab%20ERP%20Team,%20I%20am%20interested%20in%20deploying%20the%20ERP%20for%20our%20steel%20fabrication%20plant."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full btn-gradient text-slate-950 font-black py-3.5 px-4 rounded-xl transition flex items-center justify-center gap-2 text-xs shadow-md hover:brightness-105"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Chat on WhatsApp Directly</span>
-                </a>
-              </div>
             </div>
           </div>
 
