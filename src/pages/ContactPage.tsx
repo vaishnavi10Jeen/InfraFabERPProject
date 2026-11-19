@@ -96,14 +96,14 @@ export const ContactPage: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
                 
                 {/* BOX 1: OUR MAIN OFFICE (Col 1) */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100">
-                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90">
+                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
                     OUR MAIN OFFICE
                   </h3>
-                  <p className="text-[11px] text-slate-600 font-medium leading-relaxed">
+                  <p className="text-[11px] text-slate-700 font-semibold leading-relaxed">
                     FF 15, 16 Dwarkesh Complex,<br />
                     Sun Pharma Road, Vadodara,<br />
                     Gujarat – 390012
@@ -111,24 +111,24 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* BOX 2: PHONE NUMBER (Col 2 - Overlaps Right Form on Desktop) */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100 lg:translate-x-8 xl:translate-x-12">
-                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90 lg:translate-x-8 xl:translate-x-12">
+                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
                     <Phone className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
                     PHONE NUMBER
                   </h3>
-                  <a href="tel:+919924266466" className="text-xs text-slate-800 font-black hover:text-keshav-700 block transition font-mono">
+                  <a href="tel:+919924266466" className="text-xs text-slate-900 font-black hover:text-keshav-700 block transition font-mono">
                     +91 99242 66466
                   </a>
-                  <span className="text-[10px] text-slate-500 font-semibold block mt-1 font-mono">
+                  <span className="text-[10px] text-slate-600 font-semibold block mt-1 font-mono">
                     +91 98250 12345 (Toll Free)
                   </span>
                 </div>
 
                 {/* BOX 3: WHATSAPP SUPPORT (Col 1) */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100">
-                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90">
+                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
                     <MessageSquare className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -138,18 +138,18 @@ export const ContactPage: React.FC = () => {
                     href="https://wa.me/919825012345?text=Hello%20infraFab%20ERP%20Team,%20I%20am%20interested%20in%20deploying%20the%20ERP%20for%20our%20steel%20fabrication%20plant."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-keshav-700 font-black hover:underline block font-mono"
+                    className="text-xs text-keshav-800 font-black hover:underline block font-mono"
                   >
                     +91 98250 12345
                   </a>
-                  <span className="text-[10px] text-slate-500 font-medium block mt-1">
+                  <span className="text-[10px] text-slate-600 font-semibold block mt-1">
                     Mon–Sat (9 AM–7:30 PM)
                   </span>
                 </div>
 
                 {/* BOX 4: EMAIL (Col 2 - Overlaps Right Form on Desktop) */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-slate-100 lg:translate-x-8 xl:translate-x-12">
-                  <div className="w-12 h-12 rounded-2xl bg-keshav-100 text-keshav-700 flex items-center justify-center mb-3 shadow-2xs">
+                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90 lg:translate-x-8 xl:translate-x-12">
+                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
                     <Mail className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -157,11 +157,11 @@ export const ContactPage: React.FC = () => {
                   </h3>
                   <a
                     href="mailto:info@shreejiinfrastructure.com"
-                    className="text-[11px] text-keshav-700 font-black hover:underline block break-all font-mono"
+                    className="text-[11px] text-keshav-800 font-black hover:underline block break-all font-mono"
                   >
                     info@shreejiinfrastructure.com
                   </a>
-                  <span className="text-[10px] text-slate-500 font-medium block mt-1">
+                  <span className="text-[10px] text-slate-600 font-semibold block mt-1">
                     Direct Corporate Inbox
                   </span>
                 </div>
@@ -175,10 +175,10 @@ export const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* RIGHT SIDE: CONTACT INQUIRY FORM (CORE THEME COLOR: KESHAV LIME GREEN #8CC12C) */}
-            <div className="lg:col-span-7 bg-gradient-to-br from-keshav-500 via-keshav-500 to-keshav-600 border border-keshav-600/30 rounded-3xl p-6 sm:p-10 lg:p-12 lg:pl-20 xl:pl-24 shadow-2xl relative z-10 mt-8 lg:mt-0">
+            {/* RIGHT SIDE: CONTACT INQUIRY FORM (PURE WHITE BACKGROUND WITH CRISP INPUTS) */}
+            <div className="lg:col-span-7 bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 lg:p-12 lg:pl-20 xl:pl-24 shadow-2xl relative z-10 mt-8 lg:mt-0">
               {submitted ? (
-                <div className="text-center py-12 space-y-4 bg-white/95 rounded-2xl p-8 shadow-sm">
+                <div className="text-center py-12 space-y-4 bg-keshav-50/50 border border-keshav-200/60 rounded-2xl p-8 shadow-xs">
                   <div className="w-16 h-16 rounded-full bg-keshav-100 text-keshav-700 flex items-center justify-center mx-auto border border-keshav-300">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
@@ -189,7 +189,7 @@ export const ContactPage: React.FC = () => {
                   <div className="pt-4">
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="bg-slate-950 hover:bg-slate-800 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition cursor-pointer"
+                      className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition cursor-pointer"
                     >
                       Send Another Inquiry
                     </button>
@@ -197,85 +197,85 @@ export const ContactPage: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="border-b border-black/15 pb-4">
+                  <div className="border-b border-slate-100 pb-4">
                     <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">
                       Contact Us
                     </h2>
-                    <p className="text-xs sm:text-sm text-slate-950/80 font-semibold mt-1">
+                    <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
                       Tell us about your factory scale, software requirements, or questions.
                     </p>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-black text-slate-950 mb-1.5">Your Name *</label>
+                      <label className="block text-xs font-bold text-slate-700 mb-1.5">Your Name *</label>
                       <input
                         required
                         type="text"
                         placeholder="Enter your Name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
+                        className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-keshav-500 focus:ring-2 focus:ring-keshav-100 transition shadow-2xs"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-black text-slate-950 mb-1.5">Corporate Email *</label>
+                      <label className="block text-xs font-bold text-slate-700 mb-1.5">Corporate Email *</label>
                       <input
                         required
                         type="email"
                         placeholder="Enter a valid email address"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
+                        className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-keshav-500 focus:ring-2 focus:ring-keshav-100 transition shadow-2xs"
                       />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-black text-slate-950 mb-1.5">Phone / WhatsApp Number *</label>
+                      <label className="block text-xs font-bold text-slate-700 mb-1.5">Phone / WhatsApp Number *</label>
                       <input
                         required
                         type="tel"
                         placeholder="+91 98250 ..."
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
+                        className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-keshav-500 focus:ring-2 focus:ring-keshav-100 transition shadow-2xs"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-black text-slate-950 mb-1.5">Company / Factory Name *</label>
+                      <label className="block text-xs font-bold text-slate-700 mb-1.5">Company / Factory Name *</label>
                       <input
                         required
                         type="text"
                         placeholder="e.g. Apex Heavy Fabricators"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
+                        className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-keshav-500 focus:ring-2 focus:ring-keshav-100 transition shadow-2xs"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-black text-slate-950 mb-1.5">Your Message / Requirements</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1.5">Your Message / Requirements</label>
                     <textarea
                       rows={4}
                       placeholder="Tell us about your monthly tonnage, current challenges with coil scrap, Tally integration, or deployment timeline..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-keshav-500 focus:ring-2 focus:ring-keshav-100 transition shadow-2xs"
                     ></textarea>
                   </div>
 
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-black px-10 py-3.5 rounded-xl text-sm transition-all shadow-xl hover:shadow-2xl active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full sm:w-auto btn-gradient py-3.5 px-10 rounded-xl text-sm font-black text-slate-950 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 transition-all cursor-pointer"
                     >
                       <span>SUBMIT INQUIRY</span>
-                      <ArrowRight className="w-4 h-4 text-keshav-400" />
+                      <ArrowRight className="w-4 h-4 text-slate-950" />
                     </button>
                   </div>
                 </form>
