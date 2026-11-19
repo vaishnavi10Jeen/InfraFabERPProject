@@ -109,9 +109,6 @@ export const ContactPage: React.FC = () => {
                       <a href="mailto:info@shreejiinfrastructure.com" className="hover:text-keshav-700 transition font-mono font-bold block">
                         info@shreejiinfrastructure.com
                       </a>
-                      <a href="mailto:erp@shreejiinfrastructure.com" className="hover:text-keshav-700 transition font-mono text-slate-500 block">
-                        erp@shreejiinfrastructure.com
-                      </a>
                     </div>
                   </div>
                 </div>

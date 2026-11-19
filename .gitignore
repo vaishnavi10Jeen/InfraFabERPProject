@@ -34,6 +34,8 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+~$*
+.~lock.*
 
 # Local env files
 .env*.local

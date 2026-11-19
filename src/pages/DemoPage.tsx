@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Calendar, CheckCircle2, Building2, User, Mail, 
   Phone, MapPin, Gauge, KeyRound, 
-  ExternalLink, ArrowRight, ShieldCheck, Copy, Check 
+  ExternalLink, ArrowRight, ShieldCheck 
 } from 'lucide-react';
 
 export const DemoPage: React.FC = () => {
@@ -20,26 +20,8 @@ export const DemoPage: React.FC = () => {
     notes: ''
   });
 
-  const [copiedId, setCopiedId] = useState(false);
-  const [copiedPass, setCopiedPass] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-
-  const erpUrl = "https://erp.shreejiinfrastructure.com/dashboard";
-  const erpId = "test@gmail.com";
-  const erpPass = "shreeji796";
-
-  const handleCopyId = () => {
-    navigator.clipboard.writeText(erpId);
-    setCopiedId(true);
-    setTimeout(() => setCopiedId(false), 2000);
-  };
-
-  const handleCopyPass = () => {
-    navigator.clipboard.writeText(erpPass);
-    setCopiedPass(true);
-    setTimeout(() => setCopiedPass(false), 2000);
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

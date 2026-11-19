@@ -170,8 +170,6 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
   const [simulationResult, setSimulationResult] = useState<string | null>(null);
   const location = useLocation();
 
-  const LIVE_ERP_DASHBOARD_URL = "https://erp.shreejiinfrastructure.com/dashboard";
-
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
@@ -440,15 +438,14 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
             </div>
 
             <div className="shrink-0 flex items-center gap-3">
-              <a
-                href={LIVE_ERP_DASHBOARD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-keshav-50 hover:bg-keshav-100 border border-keshav-300 text-keshav-900 px-4 py-2.5 rounded-xl text-xs font-black shadow-xs flex items-center gap-2 transition"
+              <button
+                type="button"
+                onClick={onOpenDemoModal}
+                className="btn-gradient px-4 py-2.5 rounded-xl text-xs font-black text-slate-950 shadow-xs flex items-center gap-2 transition hover:brightness-105 cursor-pointer active:scale-95"
               >
-                <span>View in Dashboard</span>
-                <ExternalLink className="w-3.5 h-3.5 text-keshav-700" />
-              </a>
+                <span>Book Walkthrough</span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-950" />
+              </button>
 
               <span className="bg-gradient-to-r from-keshav-100 to-lime-100 text-keshav-900 border border-keshav-300 px-4 py-2.5 rounded-xl text-xs font-black shadow-xs flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-keshav-700" />

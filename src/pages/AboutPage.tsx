@@ -16,7 +16,6 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenDemoModal, onOpenLiveModal }) => {
   const PARENT_WEBSITE_URL = "https://shreejiinfrastructure.com/";
-  const LIVE_ERP_URL = "https://erp.shreejiinfrastructure.com/dashboard";
 
   const SHREEJI_PRODUCTS = [
     {
@@ -276,7 +275,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenDemoModal, onOpenLiv
               </p>
 
               <p>
-                The result is <strong>infraFab ERP</strong> (<a href={LIVE_ERP_URL} target="_blank" rel="noopener noreferrer" className="text-keshav-700 font-bold hover:underline">erp.shreejiinfrastructure.com/dashboard</a>): a battle-tested enterprise system forged in the heat of daily steel manufacturing, managing User Access, Departments, Teams, Attendance, Project Assets, Multi-Store Inventory, Company Project Lists, and DPR Reports with 99.4% dispatch accuracy and zero missing piece-marks.
+                The result is <strong>infraFab ERP</strong>: a battle-tested enterprise system forged in the heat of daily steel manufacturing, managing User Access, Departments, Teams, Attendance, Project Assets, Multi-Store Inventory, Company Project Lists, and DPR Reports with 99.4% dispatch accuracy and zero missing piece-marks.
               </p>
 
               <p className="font-bold text-slate-900">

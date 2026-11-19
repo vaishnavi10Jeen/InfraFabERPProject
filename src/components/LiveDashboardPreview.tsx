@@ -177,15 +177,16 @@ export const LiveDashboardPreview: React.FC<LiveDashboardPreviewProps> = ({
                 <span>Production & Dispatch Stage Breakdown • 0–12 Stages Active</span>
               </div>
 
-              <a
-                href="https://erp.shreejiinfrastructure.com/dashboard"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 btn-gradient text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-lg transition shadow-md hover:brightness-105 shrink-0"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Launch Live Dashboard</span>
-              </a>
+              {onOpenDemoModal && (
+                <button
+                  type="button"
+                  onClick={onOpenDemoModal}
+                  className="flex items-center justify-center gap-1.5 btn-gradient text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-lg transition shadow-md hover:brightness-105 shrink-0 cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Book Plant Walkthrough</span>
+                </button>
+              )}
             </div>
 
           </div>

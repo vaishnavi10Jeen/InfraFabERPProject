@@ -36,8 +36,8 @@ export const FAQ_DATA: FaqItem[] = [
     answer: 'infraFab ERP is built with offline-first PWA caching technology. Supervisors can continue scanning stage completions and logging daily logs without interruption. As soon as the device reconnects to Wi-Fi or cellular network, all logged events automatically sync to the central cloud database without data loss.'
   },
   {
-    category: 'Testing & Trial',
-    question: 'Can we test drive the live ERP system before committing to a contract?',
-    answer: 'Absolutely! You can explore the live production ERP right now at https://erp.shreejiinfrastructure.com/ using test credentials (Email: test@gmail.com, Password: shreeji796). You can also schedule a free 30-minute tailored 1-on-1 walkthrough with one of our steel manufacturing specialists who will configure sample coils and drawings for your specific plant.'
+    category: 'Consultation & Demo',
+    question: 'Can we see a live demonstration of the ERP before committing?',
+    answer: 'Yes! You can schedule a free 30-minute tailored 1-on-1 walkthrough with one of our steel manufacturing specialists who will configure sample coils, piece-marks, and approved drawings for your specific plant setup.'
   }
 ];

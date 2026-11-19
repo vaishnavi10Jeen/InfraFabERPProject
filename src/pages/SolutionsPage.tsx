@@ -14,8 +14,6 @@ interface SolutionsPageProps {
 }
 
 export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onOpenLiveModal, onOpenDemoModal }) => {
-  const LIVE_ERP_DASHBOARD_URL = "https://erp.shreejiinfrastructure.com/dashboard";
-
   const ERP_CORE_PILLARS = [
     {
       icon: FolderKanban,
