@@ -175,11 +175,11 @@ export const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* RIGHT SIDE: CONTACT INQUIRY FORM (THEME LIGHT GREEN BACKGROUND) */}
-            <div className="lg:col-span-7 bg-gradient-to-br from-keshav-200 via-keshav-200 to-keshav-300 border border-keshav-300/70 rounded-3xl p-6 sm:p-10 lg:p-12 lg:pl-20 xl:pl-24 shadow-2xl relative z-10 mt-8 lg:mt-0">
+            {/* RIGHT SIDE: CONTACT INQUIRY FORM (CORE THEME COLOR: KESHAV LIME GREEN #8CC12C) */}
+            <div className="lg:col-span-7 bg-gradient-to-br from-keshav-500 via-keshav-500 to-keshav-600 border border-keshav-600/30 rounded-3xl p-6 sm:p-10 lg:p-12 lg:pl-20 xl:pl-24 shadow-2xl relative z-10 mt-8 lg:mt-0">
               {submitted ? (
                 <div className="text-center py-12 space-y-4 bg-white/95 rounded-2xl p-8 shadow-sm">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-300">
+                  <div className="w-16 h-16 rounded-full bg-keshav-100 text-keshav-700 flex items-center justify-center mx-auto border border-keshav-300">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <h3 className="text-2xl font-black text-slate-900">Message Sent to Sales Desk</h3>
@@ -197,85 +197,85 @@ export const ContactPage: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="border-b border-black/10 pb-4">
+                  <div className="border-b border-black/15 pb-4">
                     <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">
                       Contact Us
                     </h2>
-                    <p className="text-xs sm:text-sm text-slate-800/80 font-medium mt-1">
+                    <p className="text-xs sm:text-sm text-slate-950/80 font-semibold mt-1">
                       Tell us about your factory scale, software requirements, or questions.
                     </p>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 mb-1.5">Your Name *</label>
+                      <label className="block text-xs font-black text-slate-950 mb-1.5">Your Name *</label>
                       <input
                         required
                         type="text"
                         placeholder="Enter your Name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-xs transition"
+                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 mb-1.5">Corporate Email *</label>
+                      <label className="block text-xs font-black text-slate-950 mb-1.5">Corporate Email *</label>
                       <input
                         required
                         type="email"
                         placeholder="Enter a valid email address"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-xs transition"
+                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
                       />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 mb-1.5">Phone / WhatsApp Number *</label>
+                      <label className="block text-xs font-black text-slate-950 mb-1.5">Phone / WhatsApp Number *</label>
                       <input
                         required
                         type="tel"
                         placeholder="+91 98250 ..."
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-xs transition"
+                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 mb-1.5">Company / Factory Name *</label>
+                      <label className="block text-xs font-black text-slate-950 mb-1.5">Company / Factory Name *</label>
                       <input
                         required
                         type="text"
                         placeholder="e.g. Apex Heavy Fabricators"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-xs transition"
+                        className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-900 mb-1.5">Your Message / Requirements</label>
+                    <label className="block text-xs font-black text-slate-950 mb-1.5">Your Message / Requirements</label>
                     <textarea
                       rows={4}
                       placeholder="Tell us about your monthly tonnage, current challenges with coil scrap, Tally integration, or deployment timeline..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-xs transition"
+                      className="w-full bg-white border-0 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 shadow-sm transition"
                     ></textarea>
                   </div>
 
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full sm:w-auto bg-slate-950 hover:bg-slate-800 text-white font-black px-10 py-3.5 rounded-xl text-sm transition-all shadow-md hover:shadow-xl active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full sm:w-auto bg-slate-950 hover:bg-slate-900 text-white font-black px-10 py-3.5 rounded-xl text-sm transition-all shadow-xl hover:shadow-2xl active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <span>SUBMIT INQUIRY</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4 text-keshav-400" />
                     </button>
                   </div>
                 </form>
