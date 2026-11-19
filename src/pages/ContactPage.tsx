@@ -96,14 +96,14 @@ export const ContactPage: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
                 
                 {/* BOX 1: OUR MAIN OFFICE (Col 1) */}
-                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90">
-                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-sm hover:shadow-xl hover:border-keshav-600 hover:-translate-y-1 transition-all duration-300 min-h-[195px] border-2 border-keshav-500">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-50 text-keshav-600 flex items-center justify-center mb-3 shadow-2xs border border-keshav-200">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
                     OUR MAIN OFFICE
                   </h3>
-                  <p className="text-[11px] text-slate-700 font-semibold leading-relaxed">
+                  <p className="text-[11px] text-slate-600 font-medium leading-relaxed">
                     FF 15, 16 Dwarkesh Complex,<br />
                     Sun Pharma Road, Vadodara,<br />
                     Gujarat – 390012
@@ -111,8 +111,8 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* BOX 2: PHONE NUMBER (Col 2 - Overlaps Right Form on Desktop) */}
-                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90 lg:translate-x-8 xl:translate-x-12">
-                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:border-keshav-600 hover:-translate-y-1 transition-all duration-300 min-h-[195px] border-2 border-keshav-500 lg:translate-x-8 xl:translate-x-12">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-50 text-keshav-600 flex items-center justify-center mb-3 shadow-2xs border border-keshav-200">
                     <Phone className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -121,14 +121,14 @@ export const ContactPage: React.FC = () => {
                   <a href="tel:+919924266466" className="text-xs text-slate-900 font-black hover:text-keshav-700 block transition font-mono">
                     +91 99242 66466
                   </a>
-                  <span className="text-[10px] text-slate-600 font-semibold block mt-1 font-mono">
+                  <span className="text-[10px] text-slate-500 font-semibold block mt-1 font-mono">
                     +91 98250 12345 (Toll Free)
                   </span>
                 </div>
 
                 {/* BOX 3: WHATSAPP SUPPORT (Col 1) */}
-                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90">
-                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-sm hover:shadow-xl hover:border-keshav-600 hover:-translate-y-1 transition-all duration-300 min-h-[195px] border-2 border-keshav-500">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-50 text-keshav-600 flex items-center justify-center mb-3 shadow-2xs border border-keshav-200">
                     <MessageSquare className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -138,18 +138,18 @@ export const ContactPage: React.FC = () => {
                     href="https://wa.me/919825012345?text=Hello%20infraFab%20ERP%20Team,%20I%20am%20interested%20in%20deploying%20the%20ERP%20for%20our%20steel%20fabrication%20plant."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-keshav-800 font-black hover:underline block font-mono"
+                    className="text-xs text-keshav-700 font-black hover:underline block font-mono"
                   >
                     +91 98250 12345
                   </a>
-                  <span className="text-[10px] text-slate-600 font-semibold block mt-1">
+                  <span className="text-[10px] text-slate-500 font-medium block mt-1">
                     Mon–Sat (9 AM–7:30 PM)
                   </span>
                 </div>
 
                 {/* BOX 4: EMAIL (Col 2 - Overlaps Right Form on Desktop) */}
-                <div className="bg-gradient-to-br from-keshav-50 via-keshav-100/80 to-lime-50/80 rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[195px] border border-keshav-200/90 lg:translate-x-8 xl:translate-x-12">
-                  <div className="w-12 h-12 rounded-2xl bg-white text-keshav-700 flex items-center justify-center mb-3 shadow-xs border border-keshav-200/60">
+                <div className="bg-white rounded-2xl p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-md hover:shadow-xl hover:border-keshav-600 hover:-translate-y-1 transition-all duration-300 min-h-[195px] border-2 border-keshav-500 lg:translate-x-8 xl:translate-x-12">
+                  <div className="w-12 h-12 rounded-2xl bg-keshav-50 text-keshav-600 flex items-center justify-center mb-3 shadow-2xs border border-keshav-200">
                     <Mail className="w-6 h-6" />
                   </div>
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-slate-900 mb-1.5">
@@ -157,11 +157,11 @@ export const ContactPage: React.FC = () => {
                   </h3>
                   <a
                     href="mailto:info@shreejiinfrastructure.com"
-                    className="text-[11px] text-keshav-800 font-black hover:underline block break-all font-mono"
+                    className="text-[11px] text-keshav-700 font-black hover:underline block break-all font-mono"
                   >
                     info@shreejiinfrastructure.com
                   </a>
-                  <span className="text-[10px] text-slate-600 font-semibold block mt-1">
+                  <span className="text-[10px] text-slate-500 font-medium block mt-1">
                     Direct Corporate Inbox
                   </span>
                 </div>
