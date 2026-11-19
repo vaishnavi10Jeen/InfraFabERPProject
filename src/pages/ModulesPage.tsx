@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 import { ERP_MODULES, ErpModule } from '../data/modulesData';
 import { Button } from '../components/ui/Button';
-import { Erp12StepRoadmap } from '../components/Erp12StepRoadmap';
 
 interface ModulesPageProps {
   onOpenLiveModal?: () => void;
@@ -162,8 +161,33 @@ const SIMULATION_CONFIGS: Record<string, { label: string; successMsg: string }> 
   }
 };
 
+const LIFECYCLE_PHASES = [
+  { id: 'all', label: 'All 12 Modules', count: 12 },
+  { id: 'planning', label: '1. Planning & Setup', count: 3, steps: '01–03' },
+  { id: 'workforce', label: '2. Workforce & Org', count: 4, steps: '04–07' },
+  { id: 'production', label: '3. Floor Execution', count: 3, steps: '08–10' },
+  { id: 'quality', label: '4. QC & Dispatch', count: 2, steps: '11–12' },
+];
+
+const MODULE_STAGE_MAP: Record<string, { phaseId: string; phaseBadge: string; stepNumber: string }> = {
+  'company-projects': { phaseId: 'planning', phaseBadge: 'Planning & BOQ', stepNumber: '01' },
+  'project-assets': { phaseId: 'planning', phaseBadge: 'Heavy Machinery', stepNumber: '02' },
+  'inventory-store': { phaseId: 'planning', phaseBadge: 'Stores & Stock', stepNumber: '03' },
+  'teams-management': { phaseId: 'workforce', phaseBadge: 'Teams & Rosters', stepNumber: '04' },
+  'attendance-designation': { phaseId: 'workforce', phaseBadge: 'Shift Attendance', stepNumber: '05' },
+  'user-management': { phaseId: 'workforce', phaseBadge: 'RBAC Security', stepNumber: '06' },
+  'department-management': { phaseId: 'workforce', phaseBadge: 'Org Hierarchy', stepNumber: '07' },
+  'reports-analytics': { phaseId: 'production', phaseBadge: 'Executive DPR', stepNumber: '08' },
+  'coil-management': { phaseId: 'production', phaseBadge: 'Coil Slitting', stepNumber: '09' },
+  'production-tracking': { phaseId: 'production', phaseBadge: 'Piece-Mark QR', stepNumber: '10' },
+  'quality-control': { phaseId: 'quality', phaseBadge: 'QC & NDT Logs', stepNumber: '11' },
+  'dispatch-logistics': { phaseId: 'quality', phaseBadge: 'Trailer Dispatch', stepNumber: '12' },
+};
+
 export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => {
   const [selectedModuleId, setSelectedModuleId] = useState<string>(ERP_MODULES[0].id);
+  const [selectedPhase, setSelectedPhase] = useState<string>('all');
+  const [moduleSearchQuery, setModuleSearchQuery] = useState<string>('');
   const [activeTab, setActiveTab] = useState<'telemetry' | 'pain-solution' | 'features' | 'workflow'>('telemetry');
   const [tableFilter, setTableFilter] = useState<string>('');
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
@@ -220,6 +244,21 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
     const prevIdx = (activeModuleIndex - 1 + ERP_MODULES.length) % ERP_MODULES.length;
     handleSelectModule(ERP_MODULES[prevIdx].id);
   };
+
+  const handleSelectModuleCard = (id: string) => {
+    setSelectedModuleId(id);
+  };
+
+  const filteredModules = ERP_MODULES.filter((module, idx) => {
+    const stageInfo = MODULE_STAGE_MAP[module.id];
+    const matchesPhase = selectedPhase === 'all' || stageInfo?.phaseId === selectedPhase;
+    const matchesSearch = moduleSearchQuery === '' || 
+      module.name.toLowerCase().includes(moduleSearchQuery.toLowerCase()) ||
+      module.shortDesc.toLowerCase().includes(moduleSearchQuery.toLowerCase()) ||
+      module.badge.toLowerCase().includes(moduleSearchQuery.toLowerCase()) ||
+      String(idx + 1).includes(moduleSearchQuery);
+    return matchesPhase && matchesSearch;
+  });
 
   // Filter table rows based on tableFilter input
   const filteredTableRows = activeModule.sampleData.tableRows.filter(row => 
@@ -300,113 +339,221 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
         </div>
       </section>
 
-      {/* 2. "SELECT MODULE TO INSPECT" - LEFT BASIC INFO & RIGHT 12-STEP ROADMAP IMAGE */}
-      <section id="select-module-section" className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 space-y-8 scroll-mt-20">
+      {/* 2. "SELECT MODULE TO INSPECT" - MODERN INTERACTIVE LIFECYCLE GRID & STEPPER */}
+      <section id="select-module-section" className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 space-y-6 scroll-mt-20">
         
-        {/* TOP SECTION HEADER */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-keshav-500 animate-pulse"></span>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                Select Module to Inspect
-              </h2>
-              <span className="bg-keshav-100 text-keshav-800 text-xs font-mono font-black px-2.5 py-0.5 rounded-full border border-keshav-200">
-                12 Modules Available
-              </span>
+        {/* TOP SECTION HEADER: TITLE & SEARCH/FILTER CONTROLS */}
+        <div className="bg-gradient-to-r from-slate-50 via-keshav-50/30 to-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-5 shadow-xs">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-keshav-500 animate-pulse"></span>
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                  Select Module to Inspect
+                </h2>
+                <span className="bg-keshav-100 text-keshav-800 text-xs font-mono font-black px-2.5 py-0.5 rounded-full border border-keshav-200">
+                  {filteredModules.length} Modules Available
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1.5 max-w-2xl">
+                Browse all 12 operational modules across the 4 fabrication lifecycle phases. Click any milestone card below to inspect its live plant telemetry, workflow pipeline, and analytics.
+              </p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-              Select any of the 12 milestone steps on the roadmap graphic on the right to update the module summary and reveal its full live telemetry below.
-            </p>
+
+            {/* Quick Search Input */}
+            <div className="relative w-full md:w-72 shrink-0">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search module or feature..."
+                value={moduleSearchQuery}
+                onChange={(e) => setModuleSearchQuery(e.target.value)}
+                className="w-full bg-white border border-slate-300 rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-keshav-500 focus:ring-2 focus:ring-keshav-100 shadow-2xs transition"
+              />
+              {moduleSearchQuery && (
+                <button
+                  onClick={() => setModuleSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Phase Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200/80">
+            {LIFECYCLE_PHASES.map((phase) => {
+              const isPhaseActive = selectedPhase === phase.id;
+              return (
+                <button
+                  key={phase.id}
+                  onClick={() => setSelectedPhase(phase.id)}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
+                    isPhaseActive
+                      ? 'btn-gradient text-slate-950 shadow-xs'
+                      : 'bg-white hover:bg-slate-100 border border-slate-200 text-slate-700'
+                  }`}
+                >
+                  <span>{phase.label}</span>
+                  {phase.steps && (
+                    <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md ${
+                      isPhaseActive ? 'bg-slate-950/20 text-slate-950' : 'bg-slate-100 text-slate-500'
+                    }`}>
+                      {phase.steps}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* 2-COLUMN SHOWCASE: LEFT CONTENT (ACTIVE MODULE BASIC INFO) & RIGHT IMAGE (12-STEP ROADMAP) */}
-        <div className="grid lg:grid-cols-12 gap-6 items-stretch">
-          
-          {/* LEFT SIDE: SELECTED MODULE BASIC INFORMATION */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-gradient-to-br from-white via-keshav-50/20 to-slate-50 border-2 border-keshav-500/80 rounded-3xl p-6 sm:p-7 shadow-xl shadow-keshav-100/50 relative overflow-hidden group">
-            
-            {/* Top Accent Strip */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-keshav-500 via-keshav-600 to-lime-500" />
-            
-            <div className="space-y-4">
-              {/* Step Number & Active Pill */}
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-10 h-10 rounded-xl btn-gradient text-slate-950 font-black text-sm font-mono flex items-center justify-center shadow-xs">
-                    {String(activeModuleIndex + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-wider text-keshav-800 bg-keshav-100 border border-keshav-300 px-2.5 py-0.5 rounded-full block">
-                      Step {String(activeModuleIndex + 1).padStart(2, '0')} • Active Milestone
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-500 font-bold block mt-0.5">
-                      {activeModule.badge}
-                    </span>
+        {/* 12-MODULE INTERACTIVE CARD GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {filteredModules.map((module) => {
+            const isSelected = module.id === selectedModuleId;
+            const stageInfo = MODULE_STAGE_MAP[module.id] || { phaseId: 'general', phaseBadge: 'Core', stepNumber: '00' };
+            const IconComponent = MODULE_ICONS[module.iconName] || Disc;
+
+            return (
+              <div
+                key={module.id}
+                onClick={() => handleSelectModuleCard(module.id)}
+                className={`group relative rounded-2xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                  isSelected
+                    ? 'bg-gradient-to-br from-keshav-50/80 via-white to-lime-50/40 border-2 border-keshav-500 shadow-xl shadow-keshav-100 ring-2 ring-keshav-400/20 -translate-y-1'
+                    : 'bg-white border border-slate-200 hover:border-keshav-400 hover:shadow-lg hover:-translate-y-1'
+                }`}
+              >
+                {/* Card Top: Step Tag & Active Badge */}
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className={`w-8 h-8 rounded-xl font-mono text-xs font-black flex items-center justify-center transition-all ${
+                        isSelected
+                          ? 'btn-gradient text-slate-950 shadow-xs scale-105'
+                          : 'bg-slate-100 text-slate-700 group-hover:bg-keshav-100 group-hover:text-keshav-800'
+                      }`}>
+                        {stageInfo.stepNumber}
+                      </span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                        {stageInfo.phaseBadge}
+                      </span>
+                    </div>
+
+                    {isSelected ? (
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase text-keshav-900 bg-keshav-100 border border-keshav-300 px-2.5 py-0.5 rounded-full shadow-2xs">
+                        <span className="w-1.5 h-1.5 rounded-full bg-keshav-600 animate-pulse"></span>
+                        <span>Active</span>
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-semibold text-slate-400 group-hover:text-keshav-700 transition">
+                        Click to Inspect
+                      </span>
+                    )}
                   </div>
+
+                  {/* Icon & Title */}
+                  <div className="flex items-start gap-3 my-2">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all ${
+                      isSelected
+                        ? 'bg-keshav-500 text-slate-950 shadow-sm'
+                        : 'bg-slate-50 text-slate-600 border border-slate-200 group-hover:border-keshav-300 group-hover:text-keshav-700 group-hover:bg-keshav-50'
+                    }`}>
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <h3 className={`text-sm font-black leading-snug line-clamp-2 transition ${
+                        isSelected ? 'text-slate-950' : 'text-slate-800 group-hover:text-slate-950'
+                      }`}>
+                        {module.name}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Short Description */}
+                  <p className="text-[11px] text-slate-500 line-clamp-2 font-medium leading-relaxed mt-2">
+                    {module.shortDesc}
+                  </p>
                 </div>
 
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase text-keshav-900 bg-keshav-100 border border-keshav-300 px-2.5 py-0.5 rounded-full shadow-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-keshav-600 animate-pulse"></span>
-                  <span>Inspecting</span>
-                </span>
-              </div>
+                {/* Card Footer: Metrics Pill & Arrow */}
+                <div className="pt-3.5 mt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                  <span className={`text-[10px] font-extrabold px-2.5 py-1 rounded-lg truncate ${
+                    isSelected
+                      ? 'bg-keshav-100 text-keshav-900 border border-keshav-200'
+                      : 'bg-slate-50 text-slate-600 border border-slate-200 group-hover:border-keshav-200 group-hover:bg-keshav-50 group-hover:text-keshav-800'
+                  }`}>
+                    {module.metrics}
+                  </span>
 
-              {/* Title & Description */}
-              <div>
-                <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-snug group-hover:text-keshav-800 transition-colors">
-                  {activeModule.name}
-                </h3>
-                <p className="text-xs sm:text-[13px] text-slate-600 font-medium mt-2 leading-relaxed">
-                  {activeModule.shortDesc}
-                </p>
-              </div>
-
-              {/* Core Capabilities */}
-              <div className="bg-white/90 border border-slate-200/90 rounded-2xl p-4 space-y-2.5 shadow-2xs">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-                  Core Capabilities & Features
-                </span>
-                {activeModule.features.slice(0, 3).map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-keshav-600 shrink-0 mt-0.5" />
-                    <span className="leading-tight">{feat}</span>
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${
+                    isSelected
+                      ? 'bg-keshav-500 text-slate-950'
+                      : 'bg-slate-100 text-slate-400 group-hover:bg-keshav-100 group-hover:text-keshav-700'
+                  }`}>
+                    <ChevronRight className="w-3.5 h-3.5" />
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            );
+          })}
+        </div>
 
-            {/* Bottom Routes & Action Button */}
-            <div className="pt-5 mt-5 border-t border-slate-200/80 space-y-3">
-              <div className="flex items-center justify-between text-[11px] font-mono">
-                <span className="text-slate-500 font-semibold truncate max-w-[170px]">
+        {/* ACTIVE MODULE SPOTLIGHT & NAVIGATION BAR */}
+        <div className="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl border border-slate-800">
+          <div className="flex items-center gap-3">
+            <span className="w-10 h-10 rounded-xl btn-gradient text-slate-950 font-black text-sm font-mono flex items-center justify-center shrink-0">
+              {String(activeModuleIndex + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold font-mono uppercase tracking-wider text-keshav-300">
+                  Step {String(activeModuleIndex + 1).padStart(2, '0')} of 12
+                </span>
+                <span className="text-slate-500">•</span>
+                <span className="text-[10px] text-slate-400 font-mono truncate max-w-[200px]">
                   {activeModule.erpRoute.split(',')[0]}
                 </span>
-                <span className="bg-keshav-100 text-keshav-900 font-extrabold px-2.5 py-0.5 rounded-md border border-keshav-200">
-                  {activeModule.metrics}
-                </span>
               </div>
-
-              <button
-                type="button"
-                onClick={() => handleSelectModule(activeModule.id)}
-                className="w-full btn-gradient py-3.5 rounded-xl text-xs font-black text-slate-950 flex items-center justify-center gap-2 shadow-md hover:brightness-105 transition cursor-pointer active:scale-95"
-              >
-                <span>Inspect Step {String(activeModuleIndex + 1).padStart(2, '0')} Telemetry Below ↓</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <h4 className="text-sm sm:text-base font-black text-white truncate max-w-md">
+                {activeModule.name}
+              </h4>
             </div>
           </div>
 
-          {/* RIGHT SIDE: 12-STEP ROADMAP IMAGE (CLICKABLE STEPS 01 TO 12) */}
-          <div className="lg:col-span-7 flex flex-col justify-center items-center">
-            <Erp12StepRoadmap 
-              selectedModuleId={selectedModuleId}
-              onSelectModule={handleSelectModule}
-            />
-          </div>
+          {/* Stepper Navigation Controls */}
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={handlePrevModule}
+              className="bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Prev</span>
+            </button>
 
+            <button
+              onClick={handleNextModule}
+              className="bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+            >
+              <span className="hidden sm:inline">Next</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+
+            <a
+              href="#module-inspection-stage"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('module-inspection-stage');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="btn-gradient px-4 py-2 rounded-xl text-xs font-black text-slate-950 flex items-center gap-1.5 shadow-md hover:brightness-105 transition cursor-pointer"
+            >
+              <span>Inspect Telemetry Below ↓</span>
+            </a>
+          </div>
         </div>
 
       </section>
