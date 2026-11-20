@@ -6,7 +6,7 @@ import {
   PackageCheck, FolderKanban, Users, BarChart3, 
   Smartphone, AlertTriangle, Layers, Clock, TrendingUp, 
   Building2, Factory, ShieldAlert, Award, FileSpreadsheet,
-  Check, QrCode, Wrench, UserCheck
+  Check, QrCode, Wrench, UserCheck, Sparkles, Eye
 } from 'lucide-react';
 import { LiveDashboardPreview } from '../components/LiveDashboardPreview';
 import { ComparisonTable } from '../components/ComparisonTable';
@@ -424,6 +424,133 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenLiveModal, onOpenDemoM
         <ComparisonTable onBookDemo={onOpenDemoModal} />
       </section>
 
+      {/* 8. WHY CHOOSE OUR ERP? */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 bg-keshav-100/90 border border-keshav-300 px-4 py-1.5 rounded-full text-xs font-black text-keshav-900 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-keshav-700" />
+            <span>Why Choose Our ERP?</span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.18]">
+            Built for Real Business Operations.{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-keshav-600 via-keshav-700 to-lime-700">
+              Designed for Everyday Efficiency.
+            </span>
+          </h2>
+
+          <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto">
+            Our ERP software is designed to address practical operational challenges and make everyday business management more organized.
+          </p>
+        </div>
+
+        {/* 4 Feature Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          {/* Card 1: One Connected Platform */}
+          <div className="bg-white border border-slate-200 hover:border-keshav-500 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-keshav-100 to-lime-100 text-keshav-800 flex items-center justify-center font-bold group-hover:scale-110 group-hover:bg-keshav-500 group-hover:text-slate-950 transition-all duration-300 shadow-2xs">
+                <Layers className="w-6 h-6 stroke-[2.2]" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 group-hover:text-keshav-900 transition-colors">
+                  One Connected Platform
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                  Manage multiple operational activities without switching between disconnected systems.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Practical Business Workflows */}
+          <div className="bg-white border border-slate-200 hover:border-keshav-500 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-keshav-100 to-lime-100 text-keshav-800 flex items-center justify-center font-bold group-hover:scale-110 group-hover:bg-keshav-500 group-hover:text-slate-950 transition-all duration-300 shadow-2xs">
+                <TrendingUp className="w-6 h-6 stroke-[2.2]" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 group-hover:text-keshav-900 transition-colors">
+                  Practical Business Workflows
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                  Organize essential activities such as attendance, asset tracking, stock management, and reporting.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Controlled User Access */}
+          <div className="bg-white border border-slate-200 hover:border-keshav-500 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-keshav-100 to-lime-100 text-keshav-800 flex items-center justify-center font-bold group-hover:scale-110 group-hover:bg-keshav-500 group-hover:text-slate-950 transition-all duration-300 shadow-2xs">
+                <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 group-hover:text-keshav-900 transition-colors">
+                  Controlled User Access
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                  Organize responsibilities and ERP access according to different user roles.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4: Better Operational Visibility */}
+          <div className="bg-white border border-slate-200 hover:border-keshav-500 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-keshav-100 to-lime-100 text-keshav-800 flex items-center justify-center font-bold group-hover:scale-110 group-hover:bg-keshav-500 group-hover:text-slate-950 transition-all duration-300 shadow-2xs">
+                <Eye className="w-6 h-6 stroke-[2.2]" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 group-hover:text-keshav-900 transition-colors">
+                  Better Operational Visibility
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                  Keep important business records organized for easier monitoring and management reviews.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* 5th Highlight Card: Used in a Real Business Environment */}
+        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 lg:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-keshav-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-lime-400/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 space-y-3 text-center md:text-left max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-keshav-500/20 border border-keshav-400/40 px-3.5 py-1.5 rounded-full text-xs font-bold text-keshav-300">
+              <CheckCircle2 className="w-3.5 h-3.5 text-keshav-400" />
+              <span>Real-World Industrial Validation</span>
+            </div>
+            
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight">
+              Used in a Real Business Environment
+            </h3>
+
+            <p className="text-slate-300 text-sm sm:text-base font-medium leading-relaxed">
+              The software is already being used by <strong className="text-keshav-300 font-bold">Shreeji Infrastructure</strong> to support its business operations.
+            </p>
+          </div>
+
+          <div className="relative z-10 shrink-0">
+            <button
+              onClick={onOpenDemoModal}
+              className="btn-gradient px-6 py-3.5 rounded-xl text-xs sm:text-sm font-black text-slate-950 flex items-center gap-2 shadow-lg hover:brightness-105 transition cursor-pointer active:scale-95"
+            >
+              <span>Schedule Walkthrough</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+      </section>
 
       {/* 9. SOCIAL PROOF & METRICS THAT MATTER */}
       <section className="bg-slate-50 py-16 border-y border-slate-200">
