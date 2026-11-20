@@ -535,129 +535,121 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
           </div>
         </div>
 
-        {/* SPLIT LAYOUT: LEFT SIDE CONTENT & RIGHT SIDE DUMMY IMAGE */}
+        {/* SPLIT LAYOUT: LEFT SIDE BASIC INFORMATION OF STEPS & RIGHT SIDE DUMMY IMAGE */}
         <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6">
           
-          {/* Section Tabs inside this Phase */}
+          {/* Header of Phase Container: No Selection Tabs */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-200">
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Phase Sections</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-keshav-500 animate-pulse"></span>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  Phase 0{currentPhase.phaseNumber} Overview
+                </span>
                 <span className="text-slate-300">•</span>
-                <span className="text-xs font-bold text-keshav-700">Click a section below to switch</span>
+                <span className="text-xs font-bold text-keshav-700">
+                  All {phaseModules.length} Operational Steps
+                </span>
               </div>
-              <h3 className="text-lg sm:text-xl font-black text-slate-950 mt-0.5">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-950 mt-1">
                 {currentPhase.title}
               </h3>
             </div>
 
-            {/* Section Switcher Pills for this Phase */}
-            <div className="flex flex-wrap items-center gap-2">
-              {phaseModules.map((module) => {
-                const isSelected = module.id === selectedModuleId;
-                const info = MODULE_STAGE_MAP[module.id];
-                return (
-                  <button
-                    key={module.id}
-                    onClick={() => handleSelectSection(module.id)}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
-                      isSelected
-                        ? 'btn-gradient text-slate-950 shadow-sm scale-102 ring-2 ring-keshav-400/30'
-                        : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700 border border-slate-200'
-                    }`}
-                  >
-                    <span className={`w-5 h-5 rounded-md text-[10px] font-mono flex items-center justify-center font-black ${
-                      isSelected ? 'bg-slate-950 text-white' : 'bg-white text-slate-700'
-                    }`}>
-                      {info?.stepNumber || '•'}
-                    </span>
-                    <span>{info?.shortTitle || module.name}</span>
-                  </button>
-                );
-              })}
-            </div>
+            <span className="btn-gradient text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-xl shadow-xs self-start sm:self-auto">
+              {currentPhase.badge}
+            </span>
           </div>
 
           {/* TWO-COLUMN SPLIT GRID */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             
-            {/* LEFT COLUMN: Section Content & Capabilities */}
-            <div className="lg:col-span-6 flex flex-col justify-between space-y-6 bg-slate-50/70 border border-slate-200/80 rounded-2xl p-6 sm:p-7">
-              <div className="space-y-5">
-                {/* Step badge & route */}
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="btn-gradient text-slate-950 font-black text-xs px-3 py-1 rounded-full font-mono shadow-xs">
-                    Section {activeStageInfo.stepNumber} of 12
-                  </span>
-                  <span className="text-xs font-bold text-keshav-800 bg-keshav-100 border border-keshav-300 px-3 py-1 rounded-full">
-                    {activeStageInfo.phaseBadge}
-                  </span>
-                  <span className="text-xs font-mono text-slate-600 bg-white border border-slate-200 px-2.5 py-1 rounded-md">
-                    Route: {activeModule.erpRoute.split(',')[0]}
-                  </span>
-                </div>
+            {/* LEFT COLUMN: All Steps in this Phase Shown with Basic Information (No Selection UI) */}
+            <div className="lg:col-span-7 space-y-4">
+              {phaseModules.map((mod) => {
+                const info = MODULE_STAGE_MAP[mod.id];
+                const ModIcon = MODULE_ICONS[mod.iconName] || Disc;
+                const isSelected = mod.id === selectedModuleId;
 
-                {/* Title & Icon */}
-                <div className="flex items-start gap-4">
-                  <div className="w-13 h-13 rounded-2xl btn-gradient text-slate-950 flex items-center justify-center shrink-0 shadow-md">
-                    <ActiveIcon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-tight">
-                      {activeModule.name}
-                    </h3>
-                    <p className="text-xs font-bold text-keshav-700 tracking-wide uppercase mt-1">
-                      {activeImageInfo.caption}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
-                  {activeModule.shortDesc}
-                </p>
-
-                {/* 4 Core Features / Capabilities */}
-                <div className="space-y-2.5 pt-2">
-                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
-                    Core Operational Capabilities:
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {activeModule.features.slice(0, 4).map((feature, i) => (
-                      <div
-                        key={i}
-                        className="flex items-start gap-2.5 bg-white border border-slate-200 rounded-xl p-3 shadow-2xs hover:border-keshav-300 transition"
-                      >
-                        <div className="w-5 h-5 rounded-full bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
-                          <Check className="w-3 h-3 stroke-[3]" />
-                        </div>
-                        <span className="text-xs font-bold text-slate-800 leading-snug">
-                          {feature}
-                        </span>
+                return (
+                  <div
+                    key={mod.id}
+                    onClick={() => setSelectedModuleId(mod.id)}
+                    className={`group relative rounded-2xl p-5 transition-all duration-300 border cursor-pointer ${
+                      isSelected
+                        ? 'bg-gradient-to-br from-keshav-50/70 via-white to-lime-50/30 border-2 border-keshav-500 shadow-md ring-2 ring-keshav-400/20'
+                        : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-keshav-300 shadow-2xs'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      {/* Step Icon */}
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all ${
+                        isSelected
+                          ? 'btn-gradient text-slate-950 shadow-sm scale-105'
+                          : 'bg-slate-100 text-slate-700 group-hover:bg-keshav-100 group-hover:text-keshav-800'
+                      }`}>
+                        <ModIcon className="w-6 h-6" />
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
-              {/* Bottom Actions of Left Column */}
-              <div className="pt-5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
-                <button
-                  onClick={() => handleSelectModule(activeModule.id)}
-                  className="btn-gradient px-5 py-3 rounded-xl text-xs sm:text-sm font-black text-slate-950 shadow-md hover:brightness-105 transition flex items-center gap-2 cursor-pointer active:scale-95"
-                >
-                  <span>Inspect Live Telemetry Below</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <span className="text-xs font-black bg-white text-slate-800 border border-slate-200 px-3 py-2 rounded-xl shadow-2xs flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-keshav-600" />
-                  <span>{activeModule.metrics}</span>
-                </span>
-              </div>
+                      {/* Basic Information */}
+                      <div className="flex-1 min-w-0 space-y-2">
+                        {/* Header line: Step number, title, and route */}
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className={`text-xs font-mono font-black px-2.5 py-0.5 rounded-md transition ${
+                              isSelected ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-800'
+                            }`}>
+                              Step {info?.stepNumber}
+                            </span>
+                            <h4 className="text-base font-black text-slate-950">
+                              {info?.shortTitle || mod.name}
+                            </h4>
+                          </div>
+
+                          <span className="text-[11px] font-mono text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">
+                            {mod.erpRoute.split(',')[0]}
+                          </span>
+                        </div>
+
+                        {/* Short Description / Basic Information */}
+                        <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                          {mod.shortDesc}
+                        </p>
+
+                        {/* Capabilities Badges & Actions */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100">
+                          <div className="flex flex-wrap items-center gap-1.5">
+                            {mod.features.slice(0, 2).map((feat, fIdx) => (
+                              <span
+                                key={fIdx}
+                                className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 bg-slate-100/90 border border-slate-200/90 px-2.5 py-1 rounded-lg"
+                              >
+                                <Check className="w-3 h-3 text-keshav-700 stroke-[3]" />
+                                <span>{feat}</span>
+                              </span>
+                            ))}
+                          </div>
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleSelectModule(mod.id);
+                            }}
+                            className="text-xs font-black text-keshav-800 hover:text-keshav-900 flex items-center gap-1 cursor-pointer py-1"
+                          >
+                            <span>Inspect Telemetry</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* RIGHT COLUMN: Dummy Image / Shop-Floor Preview Card */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
+            <div className="lg:col-span-5 sticky top-24 self-start">
               <div className="relative rounded-3xl overflow-hidden border border-slate-300 shadow-2xl group bg-slate-950 aspect-[4/3] sm:aspect-[16/11]">
                 
                 {/* High-Resolution Industrial Dummy Image */}
@@ -687,7 +679,7 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
                   <div className="bg-slate-900/85 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-5 text-white shadow-2xl space-y-2">
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-keshav-300 font-bold">
-                        Live ERP Preview • {activeStageInfo.phaseBadge}
+                        Live ERP Preview • {currentPhase.title}
                       </span>
                       <span className="text-[10px] font-bold text-slate-400 bg-white/10 px-2 py-0.5 rounded-md">
                         Shop Floor Sync
