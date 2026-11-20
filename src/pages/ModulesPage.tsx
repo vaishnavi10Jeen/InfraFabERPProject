@@ -161,148 +161,8 @@ const SIMULATION_CONFIGS: Record<string, { label: string; successMsg: string }> 
   }
 };
 
-interface PhaseConfig {
-  id: string;
-  phaseNumber: string;
-  title: string;
-  badge: string;
-  subtitle: string;
-  sectionsLabel: string;
-  moduleIds: string[];
-}
-
-const LIFECYCLE_PHASES: PhaseConfig[] = [
-  {
-    id: 'planning',
-    phaseNumber: '1',
-    title: '1. Planning & Setup',
-    badge: '3 Core Sections',
-    subtitle: 'Covers: Planning & BOQ, Heavy Machinery, Stores & Stock',
-    sectionsLabel: 'Planning & BOQ, Heavy Machinery, Stores & Stock',
-    moduleIds: ['company-projects', 'project-assets', 'inventory-store']
-  },
-  {
-    id: 'workforce',
-    phaseNumber: '2',
-    title: '2. Workforce & Org',
-    badge: '4 Core Sections',
-    subtitle: 'Covers: Teams Setup, Shift Attendance, Users & Roles, Departments',
-    sectionsLabel: 'Teams Setup, Attendance, Users & Roles, Departments',
-    moduleIds: ['teams-management', 'attendance-designation', 'user-management', 'department-management']
-  },
-  {
-    id: 'production',
-    phaseNumber: '3',
-    title: '3. Floor Execution',
-    badge: '3 Core Sections',
-    subtitle: 'Covers: Executive DPR, Coil Slitting, Piece-Mark QR Production',
-    sectionsLabel: 'Executive DPR, Coil Slitting, Production QR',
-    moduleIds: ['reports-analytics', 'coil-management', 'production-tracking']
-  },
-  {
-    id: 'quality',
-    phaseNumber: '4',
-    title: '4. QC & Dispatch',
-    badge: '2 Core Sections',
-    subtitle: 'Covers: QC & NDT Logs, Trailer Dispatch & Weighbridge Gate',
-    sectionsLabel: 'QC & NDT Logs, Trailer Dispatch',
-    moduleIds: ['quality-control', 'dispatch-logistics']
-  }
-];
-
-const MODULE_STAGE_MAP: Record<string, { phaseId: string; phaseBadge: string; stepNumber: string; shortTitle: string }> = {
-  'company-projects': { phaseId: 'planning', phaseBadge: 'Planning & Setup', stepNumber: '01', shortTitle: 'Planning & BOQ' },
-  'project-assets': { phaseId: 'planning', phaseBadge: 'Planning & Setup', stepNumber: '02', shortTitle: 'Heavy Machinery' },
-  'inventory-store': { phaseId: 'planning', phaseBadge: 'Planning & Setup', stepNumber: '03', shortTitle: 'Stores & Stock' },
-  'teams-management': { phaseId: 'workforce', phaseBadge: 'Workforce & Org', stepNumber: '04', shortTitle: 'Teams Setup' },
-  'attendance-designation': { phaseId: 'workforce', phaseBadge: 'Workforce & Org', stepNumber: '05', shortTitle: 'Shift Attendance' },
-  'user-management': { phaseId: 'workforce', phaseBadge: 'Workforce & Org', stepNumber: '06', shortTitle: 'Users & Roles' },
-  'department-management': { phaseId: 'workforce', phaseBadge: 'Workforce & Org', stepNumber: '07', shortTitle: 'Departments' },
-  'reports-analytics': { phaseId: 'production', phaseBadge: 'Floor Execution', stepNumber: '08', shortTitle: 'Executive DPR' },
-  'coil-management': { phaseId: 'production', phaseBadge: 'Floor Execution', stepNumber: '09', shortTitle: 'Coil Slitting' },
-  'production-tracking': { phaseId: 'production', phaseBadge: 'Floor Execution', stepNumber: '10', shortTitle: 'Production QR' },
-  'quality-control': { phaseId: 'quality', phaseBadge: 'QC & Dispatch', stepNumber: '11', shortTitle: 'QC & NDT Logs' },
-  'dispatch-logistics': { phaseId: 'quality', phaseBadge: 'QC & Dispatch', stepNumber: '12', shortTitle: 'Trailer Dispatch' },
-};
-
-const MODULE_IMAGE_MAP: Record<string, { image: string; tag: string; caption: string; statBadge: string }> = {
-  'company-projects': {
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85',
-    tag: 'Planning & BOQ Telemetry',
-    caption: 'Tekla 3D Model Milestone Sequencing & Contract BOQ Management',
-    statBadge: '6 Live PEB Plants • 4,850 MT Committed'
-  },
-  'project-assets': {
-    image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80',
-    tag: 'Heavy Machinery Telemetry',
-    caption: '15T EOT Overhead Cranes & High-Def CNC Plasma Maintenance',
-    statBadge: '48 Tracked Assets • 99.2% Uptime'
-  },
-  'inventory-store': {
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85',
-    tag: 'Stores & Stock Telemetry',
-    caption: 'Multi-Store Raw Steel, Consumables & Digital Store Indents',
-    statBadge: 'Real-Time GRN • Safety Stock Auto-Alerts'
-  },
-  'teams-management': {
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85',
-    tag: 'Workforce Gang Rosters',
-    caption: 'Fitter-Welder Bay Allocations & Gang Shift Rosters',
-    statBadge: '8 Fabrication Gangs • Daily Bay Routing'
-  },
-  'attendance-designation': {
-    image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=85',
-    tag: 'Biometric Attendance & Pay',
-    caption: 'Shift In/Out, Overtime Hours & Skill Designation Registry',
-    statBadge: '100% Payroll Sync • Real-Time Headcount'
-  },
-  'user-management': {
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
-    tag: 'RBAC Security & Audits',
-    caption: 'Role-Based Access Control, Multi-Plant Permissions & Audit Logs',
-    statBadge: 'Strict Role Hierarchy • Multi-Plant Auditing'
-  },
-  'department-management': {
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-    tag: 'Department Org Structure',
-    caption: 'Interlinked Engineering, Stores, Quality & Accounts Hierarchy',
-    statBadge: '6 Departments Linked • Unified Workflow'
-  },
-  'reports-analytics': {
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    tag: 'Executive DPR Analytics',
-    caption: 'Daily Production Rate, Cost-per-MT & Bottleneck Heatmap',
-    statBadge: '100% Real-Time Executive KPIs'
-  },
-  'coil-management': {
-    image: 'https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80',
-    tag: 'Coil Slitting & Shearing',
-    caption: 'Mother Coil Inward, Slitting Plan & Offcut Scrap Control',
-    statBadge: '8.2% Scrap Yield • Zero Camber Loss'
-  },
-  'production-tracking': {
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85',
-    tag: 'Piece-Mark QR Production',
-    caption: 'Cut → Fit-Up → SAW Weld → Shot-Blast → Sa 2.5 Paint Workflow',
-    statBadge: '100% Piece-Mark Traceability'
-  },
-  'quality-control': {
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85',
-    tag: 'QC & NDT Inspection',
-    caption: 'UT Flaw Detector, DFT Paint Gauge & Digital Client Dossier',
-    statBadge: 'AWS D1.1 Weld Compliance • TPI Clearance'
-  },
-  'dispatch-logistics': {
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85',
-    tag: 'Trailer Dispatch & Weighbridge',
-    caption: 'Trailer Axle Load Balancing & Gross Weight Gate Pass',
-    statBadge: 'Zero Site Shortage • 100% Itemized Challan'
-  }
-};
-
 export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => {
   const [selectedModuleId, setSelectedModuleId] = useState<string>(ERP_MODULES[0].id);
-  const [selectedPhase, setSelectedPhase] = useState<string>('planning');
   const [activeTab, setActiveTab] = useState<'telemetry' | 'pain-solution' | 'features' | 'workflow'>('telemetry');
   const [tableFilter, setTableFilter] = useState<string>('');
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
@@ -358,35 +218,6 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
   const handlePrevModule = () => {
     const prevIdx = (activeModuleIndex - 1 + ERP_MODULES.length) % ERP_MODULES.length;
     handleSelectModule(ERP_MODULES[prevIdx].id);
-  };
-
-  useEffect(() => {
-    const stageInfo = MODULE_STAGE_MAP[selectedModuleId];
-    if (stageInfo && stageInfo.phaseId !== selectedPhase) {
-      setSelectedPhase(stageInfo.phaseId);
-    }
-  }, [selectedModuleId]);
-
-  const handleSelectPhase = (phaseId: string) => {
-    setSelectedPhase(phaseId);
-    const phase = LIFECYCLE_PHASES.find(p => p.id === phaseId);
-    if (phase && !phase.moduleIds.includes(selectedModuleId)) {
-      setSelectedModuleId(phase.moduleIds[0]);
-    }
-  };
-
-  const handleSelectSection = (id: string) => {
-    setSelectedModuleId(id);
-  };
-
-  const currentPhase = LIFECYCLE_PHASES.find(p => p.id === selectedPhase) || LIFECYCLE_PHASES[0];
-  const phaseModules = currentPhase.moduleIds.map(id => ERP_MODULES.find(m => m.id === id)!).filter(Boolean);
-  const activeStageInfo = MODULE_STAGE_MAP[activeModule.id] || { phaseId: 'planning', phaseBadge: 'Planning & Setup', stepNumber: '01', shortTitle: 'Planning & BOQ' };
-  const activeImageInfo = MODULE_IMAGE_MAP[activeModule.id] || {
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85',
-    tag: 'Shop-Floor Telemetry',
-    caption: activeModule.name,
-    statBadge: 'Connected to Shop Floor'
   };
 
   // Filter table rows based on tableFilter input
@@ -454,324 +285,47 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
               <ArrowRight className="w-4 h-4" />
             </button>
             <a
-              href="#select-module-section"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById('select-module-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-black shadow-xs flex items-center gap-2 transition cursor-pointer"
-            >
-              <span>Explore 12 Modules Roadmap ↓</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. "SELECT MODULE TO INSPECT" - SPLIT-SCREEN LIFECYCLE WORKBENCH */}
-      <section id="select-module-section" className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 space-y-6 scroll-mt-20">
-        
-        {/* SECTION HEADER & LIFECYCLE STAGE TABS */}
-        <div className="bg-gradient-to-r from-slate-50 via-keshav-50/20 to-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xs">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-keshav-500 animate-pulse"></span>
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                  Select Module to Inspect
-                </h2>
-                <span className="bg-keshav-100 text-keshav-800 text-xs font-mono font-black px-3 py-1 rounded-full border border-keshav-200">
-                  {ERP_MODULES.length} Modules Available
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1.5 max-w-2xl">
-                Browse our 4 lifecycle phases. Select any phase to view its sections, examine the operational scope on the left, and preview the real shop-floor workflow on the right.
-              </p>
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-500">Active Phase:</span>
-              <span className="btn-gradient text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-xl shadow-xs">
-                {currentPhase.title}
-              </span>
-            </div>
-          </div>
-
-          {/* 4 LIFECYCLE PHASE SELECTOR TABS */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
-            {LIFECYCLE_PHASES.map((phase) => {
-              const isPhaseActive = selectedPhase === phase.id;
-              return (
-                <button
-                  key={phase.id}
-                  onClick={() => handleSelectPhase(phase.id)}
-                  className={`text-left p-4 rounded-2xl transition-all duration-200 cursor-pointer border relative overflow-hidden flex flex-col justify-between ${
-                    isPhaseActive
-                      ? 'bg-gradient-to-br from-white via-keshav-50/70 to-white border-2 border-keshav-500 shadow-md ring-2 ring-keshav-400/20'
-                      : 'bg-white hover:bg-slate-50/80 border-slate-200 text-slate-700 hover:border-keshav-300'
-                  }`}
-                >
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className={`text-xs font-mono font-black px-2.5 py-0.5 rounded-lg ${
-                      isPhaseActive ? 'btn-gradient text-slate-950 shadow-2xs' : 'bg-slate-100 text-slate-600'
-                    }`}>
-                      Phase 0{phase.phaseNumber}
-                    </span>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-keshav-700 bg-keshav-50 border border-keshav-200 px-2 py-0.5 rounded-md">
-                      {phase.badge}
-                    </span>
-                  </div>
-                  <h4 className={`text-sm sm:text-base font-black tracking-tight ${
-                    isPhaseActive ? 'text-slate-950' : 'text-slate-800'
-                  }`}>
-                    {phase.title}
-                  </h4>
-                  <p className="text-[11px] text-slate-500 font-medium mt-1 line-clamp-1">
-                    {phase.sectionsLabel}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* SPLIT LAYOUT: LEFT SIDE BASIC INFORMATION OF STEPS & RIGHT SIDE DUMMY IMAGE */}
-        <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6">
-          
-          {/* Header of Phase Container: No Selection Tabs */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-200">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-keshav-500 animate-pulse"></span>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Phase 0{currentPhase.phaseNumber} Overview
-                </span>
-                <span className="text-slate-300">•</span>
-                <span className="text-xs font-bold text-keshav-700">
-                  All {phaseModules.length} Operational Steps
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-950 mt-1">
-                {currentPhase.title}
-              </h3>
-            </div>
-
-            <span className="btn-gradient text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-xl shadow-xs self-start sm:self-auto">
-              {currentPhase.badge}
-            </span>
-          </div>
-
-          {/* TWO-COLUMN SPLIT GRID */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-            
-            {/* LEFT COLUMN: All Steps in this Phase Shown with Basic Information (No Selection UI) */}
-            <div className="lg:col-span-7 space-y-4">
-              {phaseModules.map((mod) => {
-                const info = MODULE_STAGE_MAP[mod.id];
-                const ModIcon = MODULE_ICONS[mod.iconName] || Disc;
-                const isSelected = mod.id === selectedModuleId;
-
-                return (
-                  <div
-                    key={mod.id}
-                    onClick={() => setSelectedModuleId(mod.id)}
-                    className={`group relative rounded-2xl p-5 transition-all duration-300 border cursor-pointer ${
-                      isSelected
-                        ? 'bg-gradient-to-br from-keshav-50/70 via-white to-lime-50/30 border-2 border-keshav-500 shadow-md ring-2 ring-keshav-400/20'
-                        : 'bg-white hover:bg-slate-50/80 border-slate-200 hover:border-keshav-300 shadow-2xs'
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      {/* Step Icon */}
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all ${
-                        isSelected
-                          ? 'btn-gradient text-slate-950 shadow-sm scale-105'
-                          : 'bg-slate-100 text-slate-700 group-hover:bg-keshav-100 group-hover:text-keshav-800'
-                      }`}>
-                        <ModIcon className="w-6 h-6" />
-                      </div>
-
-                      {/* Basic Information */}
-                      <div className="flex-1 min-w-0 space-y-2">
-                        {/* Header line: Step number, title, and route */}
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <div className="flex items-center gap-2">
-                            <span className={`text-xs font-mono font-black px-2.5 py-0.5 rounded-md transition ${
-                              isSelected ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-800'
-                            }`}>
-                              Step {info?.stepNumber}
-                            </span>
-                            <h4 className="text-base font-black text-slate-950">
-                              {info?.shortTitle || mod.name}
-                            </h4>
-                          </div>
-
-                          <span className="text-[11px] font-mono text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">
-                            {mod.erpRoute.split(',')[0]}
-                          </span>
-                        </div>
-
-                        {/* Short Description / Basic Information */}
-                        <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                          {mod.shortDesc}
-                        </p>
-
-                        {/* Capabilities Badges & Actions */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100">
-                          <div className="flex flex-wrap items-center gap-1.5">
-                            {mod.features.slice(0, 2).map((feat, fIdx) => (
-                              <span
-                                key={fIdx}
-                                className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 bg-slate-100/90 border border-slate-200/90 px-2.5 py-1 rounded-lg"
-                              >
-                                <Check className="w-3 h-3 text-keshav-700 stroke-[3]" />
-                                <span>{feat}</span>
-                              </span>
-                            ))}
-                          </div>
-
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleSelectModule(mod.id);
-                            }}
-                            className="text-xs font-black text-keshav-800 hover:text-keshav-900 flex items-center gap-1 cursor-pointer py-1"
-                          >
-                            <span>Inspect Telemetry</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* RIGHT COLUMN: Dummy Image / Shop-Floor Preview Card */}
-            <div className="lg:col-span-5 sticky top-24 self-start">
-              <div className="relative rounded-3xl overflow-hidden border border-slate-300 shadow-2xl group bg-slate-950 aspect-[4/3] sm:aspect-[16/11]">
-                
-                {/* High-Resolution Industrial Dummy Image */}
-                <img
-                  src={activeImageInfo.image}
-                  alt={activeModule.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-
-                {/* Dark Vignette Overlay for Readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-slate-950/20 pointer-events-none" />
-
-                {/* Top Overlay Badges */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-10">
-                  <div className="inline-flex items-center gap-2 bg-slate-950/80 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-bold shadow-lg">
-                    <span className="w-2 h-2 rounded-full bg-keshav-400 animate-pulse"></span>
-                    <span>{activeImageInfo.tag}</span>
-                  </div>
-
-                  <span className="bg-keshav-500 text-slate-950 font-mono font-black text-xs px-2.5 py-1 rounded-lg shadow-md">
-                    Step {activeStageInfo.stepNumber}
-                  </span>
-                </div>
-
-                {/* Bottom Overlaid Glassmorphism Telemetry Card */}
-                <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <div className="bg-slate-900/85 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-5 text-white shadow-2xl space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-keshav-300 font-bold">
-                        Live ERP Preview • {currentPhase.title}
-                      </span>
-                      <span className="text-[10px] font-bold text-slate-400 bg-white/10 px-2 py-0.5 rounded-md">
-                        Shop Floor Sync
-                      </span>
-                    </div>
-
-                    <h4 className="text-base sm:text-lg font-black text-white leading-tight">
-                      {activeImageInfo.caption}
-                    </h4>
-
-                    <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/15">
-                      <span className="text-xs font-bold text-keshav-300">
-                        ⚡ {activeImageInfo.statBadge}
-                      </span>
-                      <button
-                        onClick={() => handleSelectModule(activeModule.id)}
-                        className="text-xs font-black text-white hover:text-keshav-300 transition flex items-center gap-1 cursor-pointer"
-                      >
-                        <span>Open Simulation</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* STEPPER NAVIGATION BAR (PREV / NEXT ACROSS ALL 12 MODULES) */}
-        <div className="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl border border-slate-800">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-xl btn-gradient text-slate-950 font-black text-sm font-mono flex items-center justify-center shrink-0">
-              {String(activeModuleIndex + 1).padStart(2, '0')}
-            </span>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-bold font-mono uppercase tracking-wider text-keshav-300">
-                  Section {String(activeModuleIndex + 1).padStart(2, '0')} of 12
-                </span>
-                <span className="text-slate-500">•</span>
-                <span className="text-[10px] text-slate-400 font-mono">
-                  Phase {activeStageInfo.stepNumber <= '03' ? '1' : activeStageInfo.stepNumber <= '07' ? '2' : activeStageInfo.stepNumber <= '10' ? '3' : '4'}: {activeStageInfo.phaseBadge}
-                </span>
-              </div>
-              <h4 className="text-sm sm:text-base font-black text-white truncate max-w-md">
-                {activeModule.name}
-              </h4>
-            </div>
-          </div>
-
-          {/* Prev / Next buttons */}
-          <div className="flex items-center gap-2 shrink-0">
-            <button
-              onClick={handlePrevModule}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Previous Section</span>
-            </button>
-
-            <button
-              onClick={handleNextModule}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
-            >
-              <span>Next Section</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-
-            <a
               href="#module-inspection-stage"
               onClick={(e) => {
                 e.preventDefault();
                 const el = document.getElementById('module-inspection-stage');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="btn-gradient px-4 py-2 rounded-xl text-xs font-black text-slate-950 flex items-center gap-1.5 shadow-md hover:brightness-105 transition cursor-pointer"
+              className="bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-black shadow-xs flex items-center gap-2 transition cursor-pointer"
             >
-              <span>Inspect Telemetry ↓</span>
+              <span>Explore All 12 Modules ↓</span>
             </a>
           </div>
         </div>
-
       </section>
 
-      {/* 3. FULL-WIDTH DEEP DYNAMIC INSPECTION STAGE */}
+      {/* 2. FULL-WIDTH DEEP DYNAMIC INSPECTION STAGE */}
       <section id="module-inspection-stage" className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 scroll-mt-24">
         <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 space-y-8 shadow-xl relative overflow-hidden">
           
+          {/* Quick 12-Module Switcher Bar */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none border-b border-slate-200">
+            {ERP_MODULES.map((m, idx) => {
+              const isSelected = m.id === selectedModuleId;
+              const ModIcon = MODULE_ICONS[m.iconName] || Disc;
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => handleSelectModule(m.id)}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
+                    isSelected
+                      ? 'btn-gradient text-slate-950 font-black shadow-sm scale-102 ring-2 ring-keshav-400/30'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200'
+                  }`}
+                >
+                  <ModIcon className="w-3.5 h-3.5" />
+                  <span className="font-mono text-[10px] opacity-75">{String(idx + 1).padStart(2, '0')}.</span>
+                  <span>{m.badge}</span>
+                </button>
+              );
+            })}
+          </div>
+
           {/* Header Showcase Banner */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200">
             <div className="space-y-2">
