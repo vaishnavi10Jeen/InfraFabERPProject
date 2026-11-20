@@ -167,12 +167,6 @@ export const ContactPage: React.FC = () => {
                 </div>
 
               </div>
-
-              {/* Enterprise SLA Note */}
-              <div className="mt-5 text-center sm:text-left text-xs text-slate-500 flex items-center justify-center sm:justify-start gap-1.5 font-medium">
-                <ShieldCheck className="w-4 h-4 text-keshav-600" />
-                <span>Enterprise SLA: Shift Response Within 2 Hours</span>
-              </div>
             </div>
 
             {/* RIGHT SIDE: CONTACT INQUIRY FORM (PURE WHITE BACKGROUND WITH CRISP INPUTS) */}
