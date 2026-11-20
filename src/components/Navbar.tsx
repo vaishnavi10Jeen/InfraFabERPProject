@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  Phone, Menu, X, ArrowRight 
+  Phone, Menu, X, ArrowRight, ChevronDown, Users, PackageCheck 
 } from 'lucide-react';
 import { ShreejiLogo } from './ShreejiLogo';
 import { Button } from './ui/Button';
@@ -12,11 +12,15 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [modulesDropdownOpen, setModulesDropdownOpen] = useState(false);
+  const [mobileModulesOpen, setMobileModulesOpen] = useState(true);
   const location = useLocation();
 
   const isActive = (path: string) => {
     return location.pathname === path;
   };
+
+  const isModulesActive = location.pathname.startsWith('/modules');
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all shadow-sm">
@@ -40,16 +44,84 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
             >
               Home
             </Link>
-            <Link
-              to="/modules"
-              className={`px-3 py-1.5 text-sm transition-all border-b-2 ${
-                isActive('/modules') 
-                  ? 'text-keshav-700 font-bold border-keshav-600' 
-                  : 'text-slate-700 hover:text-keshav-700 font-semibold border-transparent hover:border-slate-300'
-              }`}
+
+            {/* ERP Modules Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setModulesDropdownOpen(true)}
+              onMouseLeave={() => setModulesDropdownOpen(false)}
             >
-              ERP Modules
-            </Link>
+              <button
+                type="button"
+                onClick={() => setModulesDropdownOpen((prev) => !prev)}
+                className={`px-3 py-1.5 text-sm transition-all border-b-2 flex items-center gap-1.5 cursor-pointer ${
+                  isModulesActive 
+                    ? 'text-keshav-700 font-bold border-keshav-600' 
+                    : 'text-slate-700 hover:text-keshav-700 font-semibold border-transparent hover:border-slate-300'
+                }`}
+              >
+                <span>ERP Modules</span>
+                <ChevronDown 
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    modulesDropdownOpen ? 'rotate-180 text-keshav-700' : 'text-slate-400'
+                  }`} 
+                />
+              </button>
+
+              {/* Desktop Dropdown Flyout */}
+              {modulesDropdownOpen && (
+                <div className="absolute top-full left-0 pt-2 w-84 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl p-2 space-y-1">
+                    <Link
+                      to="/modules/employee-user-management"
+                      onClick={() => setModulesDropdownOpen(false)}
+                      className={`flex items-start gap-3 p-2.5 rounded-xl transition ${
+                        location.pathname === '/modules/employee-user-management' || location.pathname === '/modules'
+                          ? 'bg-keshav-50/80 border border-keshav-200'
+                          : 'hover:bg-slate-50 border border-transparent'
+                      }`}
+                    >
+                      <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <Users className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                          <span>Employee & User Management</span>
+                          <span className="text-[9px] bg-keshav-200 text-keshav-900 px-1.5 py-0.5 rounded font-mono font-bold">01</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
+                          Workforce attendance, designations, teams & access control
+                        </p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/modules/asset-inventory-management"
+                      onClick={() => setModulesDropdownOpen(false)}
+                      className={`flex items-start gap-3 p-2.5 rounded-xl transition ${
+                        location.pathname === '/modules/asset-inventory-management'
+                          ? 'bg-keshav-50/80 border border-keshav-200'
+                          : 'hover:bg-slate-50 border border-transparent'
+                      }`}
+                    >
+                      <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <PackageCheck className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                          <span>Asset & Inventory Management</span>
+                          <span className="text-[9px] bg-keshav-200 text-keshav-900 px-1.5 py-0.5 rounded font-mono font-bold">02</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
+                          Heavy machinery, cranes, multi-store stock & materials
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link
               to="/solutions"
               className={`px-3 py-1.5 text-sm transition-all border-b-2 ${
@@ -145,17 +217,55 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
             >
               Home
             </Link>
-            <Link
-              to="/modules"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`px-3 py-2 border-b-2 transition-colors ${
-                isActive('/modules') 
-                  ? 'text-keshav-700 font-bold border-keshav-600' 
-                  : 'text-slate-700 hover:text-keshav-700 border-transparent'
-              }`}
-            >
-              ERP Modules
-            </Link>
+            {/* Mobile ERP Modules Accordion */}
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileModulesOpen((prev) => !prev)}
+                className={`w-full flex items-center justify-between px-3 py-2 border-b-2 transition-colors ${
+                  isModulesActive 
+                    ? 'text-keshav-700 font-bold border-keshav-600' 
+                    : 'text-slate-700 hover:text-keshav-700 border-transparent'
+                }`}
+              >
+                <span>ERP Modules</span>
+                <ChevronDown 
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileModulesOpen ? 'rotate-180 text-keshav-700' : 'text-slate-400'
+                  }`} 
+                />
+              </button>
+
+              {mobileModulesOpen && (
+                <div className="pl-3 pr-1 py-1 space-y-1 bg-slate-50/80 rounded-xl my-1 border border-slate-100">
+                  <Link
+                    to="/modules/employee-user-management"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-xs font-bold text-slate-800 hover:text-keshav-700 hover:bg-white transition"
+                  >
+                    <div className="w-6 h-6 rounded-md bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0">
+                      <Users className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="flex-1">
+                      <span>1. Employee & User Management</span>
+                    </div>
+                  </Link>
+
+                  <Link
+                    to="/modules/asset-inventory-management"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-xs font-bold text-slate-800 hover:text-keshav-700 hover:bg-white transition"
+                  >
+                    <div className="w-6 h-6 rounded-md bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0">
+                      <PackageCheck className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="flex-1">
+                      <span>2. Asset & Inventory Management</span>
+                    </div>
+                  </Link>
+                </div>
+              )}
+            </div>
             <Link
               to="/solutions"
               onClick={() => setMobileMenuOpen(false)}

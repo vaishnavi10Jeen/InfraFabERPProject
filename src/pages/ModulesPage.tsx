@@ -19,7 +19,8 @@ import {
   Lock,
   Eye,
   Shield,
-  Clock
+  Clock,
+  PackageCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -199,6 +200,24 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
           </div>
         </div>
       </section>
+
+      {/* MODULE SWITCHER TABS */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-center gap-2 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black bg-white text-slate-900 shadow-xs border border-slate-200">
+            <Users className="w-4 h-4 text-keshav-600" />
+            <span>1. Employee & User Management</span>
+            <span className="w-2 h-2 rounded-full bg-keshav-500 animate-pulse" />
+          </div>
+          <Link
+            to="/modules/asset-inventory-management"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 hover:bg-white/70 transition"
+          >
+            <PackageCheck className="w-4 h-4 text-slate-500" />
+            <span>2. Asset & Inventory Management</span>
+          </Link>
+        </div>
+      </div>
 
       {/* 2. ALL-IN-ONE ERP OVERVIEW SECTION WITH B1.JPEG ON RIGHT */}
       <section id="overview-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 scroll-mt-20">

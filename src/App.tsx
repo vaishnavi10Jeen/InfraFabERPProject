@@ -8,6 +8,7 @@ import { FloatingContactWidget } from './components/FloatingContactWidget';
 // Pages
 import { HomePage } from './pages/HomePage';
 import { ModulesPage } from './pages/ModulesPage';
+import { AssetInventoryPage } from './pages/AssetInventoryPage';
 import { SolutionsPage } from './pages/SolutionsPage';
 import { RoiCalculatorPage } from './pages/RoiCalculatorPage';
 import { PricingPage } from './pages/PricingPage';
@@ -60,6 +61,22 @@ export function App() {
               path="/modules"
               element={
                 <ModulesPage
+                  onOpenDemoModal={() => setIsDemoModalOpen(true)}
+                />
+              }
+            />
+            <Route
+              path="/modules/employee-user-management"
+              element={
+                <ModulesPage
+                  onOpenDemoModal={() => setIsDemoModalOpen(true)}
+                />
+              }
+            />
+            <Route
+              path="/modules/asset-inventory-management"
+              element={
+                <AssetInventoryPage
                   onOpenDemoModal={() => setIsDemoModalOpen(true)}
                 />
               }
