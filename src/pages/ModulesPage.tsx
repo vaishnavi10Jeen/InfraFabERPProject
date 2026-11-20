@@ -1,7 +1,5 @@
 import React from 'react';
-import { 
-  ArrowRight, Check, Users, Wrench, PackageCheck, BarChart3, Sparkles 
-} from 'lucide-react';
+import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ModulesPageProps {
@@ -107,49 +105,6 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
                 <p className="text-slate-900 font-bold">
                   Our ERP software brings essential business operations together in one organized platform, helping teams work more efficiently and management make informed decisions.
                 </p>
-              </div>
-
-              {/* 4 Feature Pillars Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                <div className="flex items-start gap-3 bg-white border border-slate-200 p-3.5 rounded-2xl shadow-2xs hover:border-keshav-400 transition">
-                  <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
-                    <Users className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-black text-slate-900">Employee Records</h4>
-                    <p className="text-[11px] text-slate-500 font-medium">Departments, roles & attendance</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 bg-white border border-slate-200 p-3.5 rounded-2xl shadow-2xs hover:border-keshav-400 transition">
-                  <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
-                    <Wrench className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-black text-slate-900">Company Assets</h4>
-                    <p className="text-[11px] text-slate-500 font-medium">Machinery, cranes & maintenance</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 bg-white border border-slate-200 p-3.5 rounded-2xl shadow-2xs hover:border-keshav-400 transition">
-                  <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
-                    <PackageCheck className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-black text-slate-900">Tracking Inventory</h4>
-                    <p className="text-[11px] text-slate-500 font-medium">Raw materials, stock & indents</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 bg-white border border-slate-200 p-3.5 rounded-2xl shadow-2xs hover:border-keshav-400 transition">
-                  <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
-                    <BarChart3 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-black text-slate-900">Reviewing Reports</h4>
-                    <p className="text-[11px] text-slate-500 font-medium">Daily DPR & analytics</p>
-                  </div>
-                </div>
               </div>
 
               {/* Highlight Box */}
