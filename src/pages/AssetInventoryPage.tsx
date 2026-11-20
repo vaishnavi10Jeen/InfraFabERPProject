@@ -234,7 +234,7 @@ export const AssetInventoryPage: React.FC<AssetInventoryPageProps> = ({ onOpenDe
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl overflow-hidden border-2 border-slate-200 shadow-2xl group bg-slate-950">
                 <img
-                  src="/erp.png"
+                  src="/b3.jpg"
                   alt="Industrial Asset and Inventory Management"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
