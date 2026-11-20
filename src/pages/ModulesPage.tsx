@@ -20,7 +20,8 @@ import {
   Eye,
   Shield,
   Clock,
-  PackageCheck
+  PackageCheck,
+  QrCode
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -201,7 +202,7 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
         </div>
       </section>
 
-      {/* MODULE SWITCHER TABS */}
+      {/* MODULE SWITCHER TABS (3 MODULES) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-center gap-2 shadow-2xs">
           <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black bg-white text-slate-900 shadow-xs border border-slate-200">
@@ -215,6 +216,13 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
           >
             <PackageCheck className="w-4 h-4 text-slate-500" />
             <span>2. Asset & Inventory Management</span>
+          </Link>
+          <Link
+            to="/modules/dispatch-qr-management"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 hover:bg-white/70 transition"
+          >
+            <QrCode className="w-4 h-4 text-slate-500" />
+            <span>3. Dispatch & QR Code Management</span>
           </Link>
         </div>
       </div>

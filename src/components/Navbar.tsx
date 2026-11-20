@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  Phone, Menu, X, ArrowRight, ChevronDown, Users, PackageCheck 
+  Phone, Menu, X, ArrowRight, ChevronDown, Users, PackageCheck, QrCode 
 } from 'lucide-react';
 import { ShreejiLogo } from './ShreejiLogo';
 import { Button } from './ui/Button';
@@ -114,6 +114,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
                         </div>
                         <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
                           Heavy machinery, cranes, multi-store stock & materials
+                        </p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/modules/dispatch-qr-management"
+                      onClick={() => setModulesDropdownOpen(false)}
+                      className={`flex items-start gap-3 p-2.5 rounded-xl transition ${
+                        location.pathname === '/modules/dispatch-qr-management'
+                          ? 'bg-keshav-50/80 border border-keshav-200'
+                          : 'hover:bg-slate-50 border border-transparent'
+                      }`}
+                    >
+                      <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <QrCode className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                          <span>Dispatch & QR Code Management</span>
+                          <span className="text-[9px] bg-keshav-200 text-keshav-900 px-1.5 py-0.5 rounded font-mono font-bold">03</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
+                          Project tracking, dispatches, QR scanning & client access
                         </p>
                       </div>
                     </Link>
@@ -261,6 +284,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
                     </div>
                     <div className="flex-1">
                       <span>2. Asset & Inventory Management</span>
+                    </div>
+                  </Link>
+
+                  <Link
+                    to="/modules/dispatch-qr-management"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2.5 py-2 px-2.5 rounded-lg text-xs font-bold text-slate-800 hover:text-keshav-700 hover:bg-white transition"
+                  >
+                    <div className="w-6 h-6 rounded-md bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0">
+                      <QrCode className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="flex-1">
+                      <span>3. Dispatch & QR Code Management</span>
                     </div>
                   </Link>
                 </div>

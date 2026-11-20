@@ -9,6 +9,7 @@ import { FloatingContactWidget } from './components/FloatingContactWidget';
 import { HomePage } from './pages/HomePage';
 import { ModulesPage } from './pages/ModulesPage';
 import { AssetInventoryPage } from './pages/AssetInventoryPage';
+import { DispatchQrPage } from './pages/DispatchQrPage';
 import { SolutionsPage } from './pages/SolutionsPage';
 import { RoiCalculatorPage } from './pages/RoiCalculatorPage';
 import { PricingPage } from './pages/PricingPage';
@@ -77,6 +78,14 @@ export function App() {
               path="/modules/asset-inventory-management"
               element={
                 <AssetInventoryPage
+                  onOpenDemoModal={() => setIsDemoModalOpen(true)}
+                />
+              }
+            />
+            <Route
+              path="/modules/dispatch-qr-management"
+              element={
+                <DispatchQrPage
                   onOpenDemoModal={() => setIsDemoModalOpen(true)}
                 />
               }
