@@ -1,11 +1,42 @@
 import React from 'react';
-import { ArrowRight, Check, Sparkles } from 'lucide-react';
+import { 
+  ArrowRight, 
+  Check, 
+  Sparkles, 
+  Layers, 
+  Target, 
+  TrendingUp, 
+  ShieldCheck 
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ModulesPageProps {
   onOpenLiveModal?: () => void;
   onOpenDemoModal: () => void;
 }
+
+const KEY_BENEFITS = [
+  {
+    title: 'Centralized Management',
+    description: 'Manage essential business information from a single platform.',
+    icon: Layers,
+  },
+  {
+    title: 'Better Accuracy',
+    description: 'Reduce repetitive data entry and manual record-keeping errors.',
+    icon: Target,
+  },
+  {
+    title: 'Improved Productivity',
+    description: 'Simplify daily administrative tasks and operational workflows.',
+    icon: TrendingUp,
+  },
+  {
+    title: 'Secure Access',
+    description: 'Control information access according to user responsibilities.',
+    icon: ShieldCheck,
+  },
+];
 
 export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => {
   return (
@@ -169,6 +200,113 @@ export const ModulesPage: React.FC<ModulesPageProps> = ({ onOpenDemoModal }) => 
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 3. KEY BENEFITS SECTION (IMAGE-MATCHED CIRCULAR CARDS WITH HEXAGON BADGES) */}
+      <section className="relative py-16 sm:py-24 border-t border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-keshav-50/20 overflow-hidden">
+        
+        {/* Ambient Theme Radial Glows */}
+        <div className="absolute top-1/3 left-1/4 -translate-y-1/2 w-96 h-96 bg-keshav-100/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-lime-100/30 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Subtle Geometric Background Lattice */}
+        <div 
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 sm:mb-20">
+            <div className="inline-flex items-center gap-2 bg-keshav-100/90 border border-keshav-300 px-4 py-1.5 rounded-full text-xs font-black text-keshav-900 shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-keshav-700" />
+              <span>Key Benefits</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.18]">
+              Key Benefits of{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-keshav-600 via-keshav-700 to-lime-700">
+                Our ERP Solution
+              </span>
+            </h2>
+
+            <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto">
+              Empowering steel fabrication, PEB, and infrastructure teams with a unified, accurate, and secure operational backbone.
+            </p>
+          </div>
+
+          {/* 4 Circular Cards with Hexagon Badges Grid matching the attached image */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-5 xl:gap-8 justify-items-center">
+            {KEY_BENEFITS.map((benefit, idx) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div
+                  key={idx}
+                  className="relative flex flex-col items-center group pt-12 sm:pt-14 w-full max-w-[270px]"
+                >
+                  {/* Top Overlapping Pointy-Topped Hexagon Badge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-20 h-24 sm:w-22 sm:h-26 drop-shadow-md group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300">
+                    <svg viewBox="0 0 90 102" className="w-full h-full">
+                      <defs>
+                        <linearGradient id={`hex-grad-${idx}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#A6D247" />
+                          <stop offset="35%" stopColor="#8CC12C" />
+                          <stop offset="100%" stopColor="#5E8617" />
+                        </linearGradient>
+                      </defs>
+                      <polygon
+                        points="45,3 86,26.5 86,75.5 45,99 4,75.5 4,26.5"
+                        fill={`url(#hex-grad-${idx})`}
+                        stroke="#ffffff"
+                        strokeWidth="4"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    {/* White Icon Inside Hexagon */}
+                    <div className="absolute inset-0 flex items-center justify-center text-white pb-0.5">
+                      <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2] drop-shadow-xs" />
+                    </div>
+                  </div>
+
+                  {/* Circular Body Card with Theme Green Ring Border */}
+                  <div className="w-full aspect-square rounded-full bg-white border-[3.5px] border-keshav-500 shadow-xl group-hover:shadow-2xl group-hover:border-keshav-600 transition-all duration-300 flex flex-col items-center justify-center text-center px-5 sm:px-6 pt-12 sm:pt-14 pb-5 group-hover:-translate-y-1">
+                    <h3 className="text-sm sm:text-base xl:text-lg font-black text-slate-950 mb-2 leading-snug tracking-tight group-hover:text-keshav-900 transition-colors">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs xl:text-sm text-slate-600 font-medium leading-relaxed max-w-[200px]">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom CTA Highlight Banner */}
+          <div className="mt-16 sm:mt-20 max-w-4xl mx-auto bg-gradient-to-r from-keshav-50 via-white to-lime-50/60 border border-keshav-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="text-center sm:text-left space-y-1">
+              <h3 className="text-base sm:text-lg font-black text-slate-950">
+                Ready to experience these benefits in your business?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                Get a personalized walkthrough with our ERP specialists today.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <button
+                onClick={onOpenDemoModal}
+                className="btn-gradient px-6 py-3 rounded-xl text-xs sm:text-sm font-black text-slate-950 flex items-center gap-2 shadow-md hover:brightness-105 transition cursor-pointer active:scale-95"
+              >
+                <span>Schedule Walkthrough</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
         </div>
       </section>
 
