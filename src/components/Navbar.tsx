@@ -70,75 +70,57 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
 
               {/* Desktop Dropdown Flyout */}
               {modulesDropdownOpen && (
-                <div className="absolute top-full left-0 pt-2 w-84 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl p-2 space-y-1">
+                <div className="absolute top-full left-0 pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl p-1.5 space-y-1">
                     <Link
                       to="/modules/employee-user-management"
                       onClick={() => setModulesDropdownOpen(false)}
-                      className={`flex items-start gap-3 p-2.5 rounded-xl transition ${
+                      className={`flex items-center gap-3 p-2 rounded-xl transition ${
                         location.pathname === '/modules/employee-user-management' || location.pathname === '/modules'
-                          ? 'bg-keshav-50/80 border border-keshav-200'
-                          : 'hover:bg-slate-50 border border-transparent'
+                          ? 'bg-keshav-50/80 border border-keshav-200 text-keshav-900 font-black'
+                          : 'hover:bg-slate-50 border border-transparent text-slate-800 hover:text-keshav-800 font-bold'
                       }`}
                     >
-                      <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-8 h-8 rounded-lg bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0">
                         <Users className="w-4 h-4" />
                       </div>
-                      <div>
-                        <div className="text-xs font-black text-slate-900 flex items-center gap-1.5">
-                          <span>Employee & User Management</span>
-                          <span className="text-[9px] bg-keshav-200 text-keshav-900 px-1.5 py-0.5 rounded font-mono font-bold">01</span>
-                        </div>
-                        <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
-                          Workforce attendance, designations, teams & access control
-                        </p>
-                      </div>
+                      <span className="text-xs">
+                        Employee & User Management
+                      </span>
                     </Link>
 
                     <Link
                       to="/modules/asset-inventory-management"
                       onClick={() => setModulesDropdownOpen(false)}
-                      className={`flex items-start gap-3 p-2.5 rounded-xl transition ${
+                      className={`flex items-center gap-3 p-2 rounded-xl transition ${
                         location.pathname === '/modules/asset-inventory-management'
-                          ? 'bg-keshav-50/80 border border-keshav-200'
-                          : 'hover:bg-slate-50 border border-transparent'
+                          ? 'bg-keshav-50/80 border border-keshav-200 text-keshav-900 font-black'
+                          : 'hover:bg-slate-50 border border-transparent text-slate-800 hover:text-keshav-800 font-bold'
                       }`}
                     >
-                      <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-8 h-8 rounded-lg bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0">
                         <PackageCheck className="w-4 h-4" />
                       </div>
-                      <div>
-                        <div className="text-xs font-black text-slate-900 flex items-center gap-1.5">
-                          <span>Asset & Inventory Management</span>
-                          <span className="text-[9px] bg-keshav-200 text-keshav-900 px-1.5 py-0.5 rounded font-mono font-bold">02</span>
-                        </div>
-                        <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
-                          Heavy machinery, cranes, multi-store stock & materials
-                        </p>
-                      </div>
+                      <span className="text-xs">
+                        Asset & Inventory Management
+                      </span>
                     </Link>
 
                     <Link
                       to="/modules/dispatch-qr-management"
                       onClick={() => setModulesDropdownOpen(false)}
-                      className={`flex items-start gap-3 p-2.5 rounded-xl transition ${
+                      className={`flex items-center gap-3 p-2 rounded-xl transition ${
                         location.pathname === '/modules/dispatch-qr-management'
-                          ? 'bg-keshav-50/80 border border-keshav-200'
-                          : 'hover:bg-slate-50 border border-transparent'
+                          ? 'bg-keshav-50/80 border border-keshav-200 text-keshav-900 font-black'
+                          : 'hover:bg-slate-50 border border-transparent text-slate-800 hover:text-keshav-800 font-bold'
                       }`}
                     >
-                      <div className="w-9 h-9 rounded-xl bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-8 h-8 rounded-lg bg-keshav-100 text-keshav-800 flex items-center justify-center shrink-0">
                         <QrCode className="w-4 h-4" />
                       </div>
-                      <div>
-                        <div className="text-xs font-black text-slate-900 flex items-center gap-1.5">
-                          <span>Dispatch & QR Code Management</span>
-                          <span className="text-[9px] bg-keshav-200 text-keshav-900 px-1.5 py-0.5 rounded font-mono font-bold">03</span>
-                        </div>
-                        <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
-                          Project tracking, dispatches, QR scanning & client access
-                        </p>
-                      </div>
+                      <span className="text-xs">
+                        Dispatch & QR Code Management
+                      </span>
                     </Link>
                   </div>
                 </div>
