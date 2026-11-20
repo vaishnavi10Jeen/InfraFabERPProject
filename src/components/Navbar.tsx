@@ -252,7 +252,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
                       <Users className="w-3.5 h-3.5" />
                     </div>
                     <div className="flex-1">
-                      <span>1. Employee & User Management</span>
+                      <span>Employee & User Management</span>
                     </div>
                   </Link>
 
@@ -265,7 +265,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
                       <PackageCheck className="w-3.5 h-3.5" />
                     </div>
                     <div className="flex-1">
-                      <span>2. Asset & Inventory Management</span>
+                      <span>Asset & Inventory Management</span>
                     </div>
                   </Link>
 
@@ -278,7 +278,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal }) => {
                       <QrCode className="w-3.5 h-3.5" />
                     </div>
                     <div className="flex-1">
-                      <span>3. Dispatch & QR Code Management</span>
+                      <span>Dispatch & QR Code Management</span>
                     </div>
                   </Link>
                 </div>
